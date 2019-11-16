@@ -6,9 +6,12 @@ using namespace std;
 
 class Party
 {
-private:
-    string name;
-    string vote;
-    vector<Candidate> candidate;
+    public:
+        ~Party();
+        Party(string name);
+    private:
+        string name;
+        string vote;
+        vector<Candidate> candidate;
 };
 #endif
