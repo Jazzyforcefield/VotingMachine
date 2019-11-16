@@ -1,11 +1,11 @@
-#ifndef _PARTY_H
-#define _PARTY_H
+#ifndef _OPL_H
+#define _OPL_H
 
 #include <iostream>
 #include <vector>
 using namespace std;
 
-class Party
+class OPL
 {
 public:
     vector<Candidate> get_candidates();
