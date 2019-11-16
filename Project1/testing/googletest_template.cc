@@ -3,34 +3,53 @@
 #include "gtest/gtest.h"
 
 // The fixture for testing class Foo.
-class <NAME OF YOUR TESTING CLASS> : public ::testing::Test {
+class <CPL> : public ::testing::Test {
  protected:
   // Put member variables here
-  OPL * opl_;
+  CPL * cpl_;
 
   void SetUp() override { // Initialize things here
-     opl_ = new OPL();
+     cpl_ = new CPL();
   }
 
   void TearDown() override {  // Delete stuff here
-     delete opl_;
+     delete cpl_;
   }
 };
 
 // Tests that the Foo::Bar() method does Abc.
-TEST_F(<NAME OF YOUR TESTING CLASS>, OPLIncrementTest) {
-  vector<Candidate *> * cands = opl->get_candidates();
-  opl_->increment(2);
-  EXPECT_EQ(*cands[2].votes_, 1);
+TEST_F(<CPL>, CPLIncrementTest) {
+  vector<Party *> * parties = cpl->get_parties();
+  //EXPECT_EQ(*parties[1].name_, "G");
+  //EXPECT_EQ(*parties[2].name_, "G");
 
-  opl_->increment(2);
-  EXPECT_EQ(*cands[2].votes_, 2);
-  EXPECT_EQ(*cands[0].votes_, 0);
-  EXPECT_EQ(*cands[1].votes_, 0);
-  EXPECT_EQ(*cands[3].votes_, 0);
 
-  opl_->increment(3);
-  EXPECT_EQ(*cands[3].votes_, 1);
+  int party_number = 0;
+
+
+  for (int each_ballot = 0; each_ballot < 10; each_ballot++)
+  { 
+	  for (int each_increment = 0; each_increment < parties.size(); each_increment++)
+	  { 
+		  cpl_->increment(party_number);
+  
+		  for (int each_party = 0; each_party < parties.size(); each_party++)
+		  {
+			  if (each_party > party_number)
+			  {
+				  EXPECT_EQ(*parties[each_party].votes_, each_ballot) << "ballot added to wrong party";
+			  }
+			  else
+			  {
+				  EXPECT_EQ(*parties[each_party].votes_, each_ballot+1) << "ballot didn't add to the right party";
+			  }  
+		  }
+  
+		  party_number++;
+	  }
+  }
+
+
 }
 
 // Tests that Foo does Xyz.
