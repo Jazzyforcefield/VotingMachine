@@ -1,9 +1,9 @@
-#include "whatever source file you're testing"
+#include "src/cpl.h"
 
 #include "gtest/gtest.h"
 
 // The fixture for testing class Foo.
-class <CPL> : public ::testing::Test {
+class CPLTests : public ::testing::Test {
  protected:
   // Put member variables here
   CPL * cpl_;
@@ -18,15 +18,18 @@ class <CPL> : public ::testing::Test {
 };
 
 // Tests that the Foo::Bar() method does Abc.
-TEST_F(<CPL>, CPLIncrementTest) {
+TEST_F(CPLTests, CPLIncrementTest) {
   vector<Party *> * parties = cpl->get_parties();
-  //EXPECT_EQ(*parties[1].name_, "G");
-  //EXPECT_EQ(*parties[2].name_, "G");
+  char party_name = 'A';
+  for (int each_party; each_party < parties.size(); each_party++)
+  {
+	  EXPECT_EQ(*parties[each_party].name_, party_name);
+	  party_name++;
+  }
+  
 
-
+  /*
   int party_number = 0;
-
-
   for (int each_ballot = 0; each_ballot < 10; each_ballot++)
   { 
 	  for (int each_increment = 0; each_increment < parties.size(); each_increment++)
@@ -48,11 +51,8 @@ TEST_F(<CPL>, CPLIncrementTest) {
 		  party_number++;
 	  }
   }
-
-
+  */
 }
 
-// Tests that Foo does Xyz.
-TEST_F(FooTest, DoesXyz) {
-  // Exercises the Xyz feature of Foo.
-}
+
+
