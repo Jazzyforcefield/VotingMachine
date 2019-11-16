@@ -9,6 +9,6 @@ class Party
 private:
     string name;
     string vote;
-    vector<Candidate*> candidate;
+    vector<Candidate> candidate;
 };
 #endif
