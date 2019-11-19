@@ -3,17 +3,17 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
-class CPL
-{
-public:
-    ~CPL();
-    vector<Party> get_parties();
-    int increment();
-    int display();
-    int create_txt_file();
-private:
-    std::vector<Party> parties;
+class CPL {
+ public:
+  CPL(int seats, int ballots, int candidates, std::vector<Party *> *);
+  vector<Party *> * get_parties();
+  int increment(int index);
+  int Display();
+  int create_txt_file();
+
+ private:
+  std::vector<Party *> parties;
 };
+
 #endif
