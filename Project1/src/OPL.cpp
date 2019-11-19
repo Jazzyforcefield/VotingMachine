@@ -1,9 +1,7 @@
 
 #include "OPL.h"
 
-OPL::OPL(int seats, int ballots, int candidates) {
-	VotingType(seats, ballots, candidates);
-
+OPL::OPL(int seats, int ballots, int candidates) : VotingType(seats, ballots, candidates) {
 
 }
 
@@ -27,11 +25,11 @@ int OPL::increment(int index) {
 }
 
 int OPL::Display() {
-
+  return 0;
 }
 
 int OPL::create_txt_file() {
-
+  return 0;
 }
 
 int OPL::winner()

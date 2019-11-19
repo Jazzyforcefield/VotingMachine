@@ -4,12 +4,12 @@
 #include <iostream>
 using namespace std;
 
-class Candidate
-{
-public:
-    int won;
-    string name;
-    string party;
-    int votes;
+class Candidate {
+ public:
+  int won;
+  string name;
+  string party;
+  int votes;
 };
+
 #endif
