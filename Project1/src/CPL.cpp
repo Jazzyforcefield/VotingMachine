@@ -31,7 +31,7 @@ int CPL::Display() {
 }
 
 int CPL::create_txt_file() {
-	CPL::winner();
+	int winnerc = CPL::winner();
 	vector<Party*> parties = *CPL::get_parties();
 	int sizep = parties.size();
 	ofstream outfile;
