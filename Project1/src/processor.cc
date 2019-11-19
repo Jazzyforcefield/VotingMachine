@@ -69,8 +69,8 @@ int Processor::process() {
 
     int broken = 0;
     int j = 0;
-    std::vector<string> partytokens;
-    stringstream partystream(part);
+    std::vector<std::string> partytokens;
+    std::stringstream partystream(part);
     std::string temp;
     while (std::getline(partystream, temp, ',')) {
       partytokens.push_back(temp);
@@ -78,7 +78,7 @@ int Processor::process() {
 
     for (int i = 0; i < party_count; i++) {
       Party * party = new Party();
-      party->name = partytokens[i];
+      party->name_ = partytokens[i];
       if (broken == 1) {
         parse_CPL_line(party, line);
         broken = 0;
@@ -116,11 +116,11 @@ int Processor::process() {
   vote_->Display();
 }
 
-int Processor::parse_OPL_line(Candidate * candidate, string line) {
-  std::vector<string> tokens;
-  stringstream linestream(line);
+int Processor::parse_OPL_line(Candidate * candidate, std::string line) {
+  std::vector<std::string> tokens;
+  std::stringstream linestream(line);
 
-  string temp;
+  std::string temp;
 
   while (std::getline(linestream, temp, ',')) {
     tokens.push_back(temp);
@@ -131,16 +131,16 @@ int Processor::parse_OPL_line(Candidate * candidate, string line) {
     return -1;
   }
 
-  candidate->name = tokens[0];
-  candidate->party = tokens[1];
+  candidate->name_ = tokens[0];
+  candidate->party_ = tokens[1];
   return 0;
 }
 
-int Processor::parse_CPL_line(Party * party, string line) { // Sets party attributes
-  std::vector<string> tokens;
-  stringstream linestream(line);
+int Processor::parse_CPL_line(Party * party, std::string line) { // Sets party attributes
+  std::vector<std::string> tokens;
+  std::stringstream linestream(line);
 
-  string temp;
+  std::string temp;
 
   while (std::getline(linestream, temp, ',')) {
     tokens.push_back(temp);
@@ -151,15 +151,15 @@ int Processor::parse_CPL_line(Party * party, string line) { // Sets party attrib
     return -1;
   }
 
-  party->members.push_back(tokens[0]);
+  party->members_.push_back(tokens[0]);
   return 0;
 }
 
 int Processor::get_one_index(std::string line) {
-  std::vector<string> tokens;
-  stringstream linestream(line);
+  std::vector<std::string> tokens;
+  std::stringstream linestream(line);
   int count;
-  string temp;
+  std::string temp;
 
   while (std::getline(linestream, temp, ',')) {
     if (temp.compare("1")) {
@@ -172,9 +172,9 @@ int Processor::get_one_index(std::string line) {
 }
 
 int main() {
-  string file_name;
+  std::string file_name;
   std::cout << "Enter file name: ";
-  cin >> file_name;
+  std::cin >> file_name;
 
   Processor * processor = new Processor(file_name);  
   processor->process();
