@@ -1,1 +1,8 @@
 # List of bugs
+1. Display function in both CPL and OPL class cannot work.
+2. Increment function doesn't work
+3. the numbers of candidates exceed the number expected seats.
+4. If the candidates or parties are in tie, cannot determine who is the winner.
+5. System doesn't work
+6. Cannot open the input file
+7. Code not completely tested, still in progress.
