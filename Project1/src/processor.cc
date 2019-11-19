@@ -56,7 +56,6 @@ int Processor::process() {
     party_count = std::stoi(line);
     std::getline(f, line);
     o << line << std::endl;
-    parse_party(parties, line);   // Creates new parties 
 
     std::getline(f, line);
     o << line << std::endl;
@@ -70,11 +69,26 @@ int Processor::process() {
 
     vote_ = new CPL(seats, ballots, candidates);
 
-    for (int i = 0; i < candidates; i++) {
+    int broken = 0;
+    int j = 0;
+    for (int i = 0; i < party_count; i++) {
       Party * party = new Party();
-      std::getline(f, line);
-      o << "[" << line << "]" << std::endl;
-      parse_CPL_line(party, line);
+      if (broken == 1) {
+        parse_CPL_line(party, line);
+        broken = 0;
+      }
+
+      while (j < candidates) {
+        std::getline(f, line);
+        o << "[" << line << "]" << std::endl;
+        int result = parse_CPL_line(party, line);
+        if (result == 0) {
+          j++;
+        } else {
+          broken = 1;
+          break;
+        }
+      }
       vote_->get_parties()->push_back(party);
     }
   } else {
@@ -93,17 +107,10 @@ int Processor::process() {
     int index = get_one_index(line);
     vote_->increment(index);
   }
-
-  // Determine winner
-  
-}
-
-int Processor::parse_party(Party * party, std::string name) {
-  
 }
 
 int Processor::parse_OPL_line(Candidate * candidate, string line) {
-
+  std::vector
 }
 
 int Processor::parse_CPL_line(Party * party, string line) { // Sets party attributes
