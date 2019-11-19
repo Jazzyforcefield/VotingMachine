@@ -27,6 +27,7 @@ int CPL::increment(int index) {
 }
 
 int CPL::Display() {
+  //create_txt_file();
   std::cout << "Displaying GUI" << std::endl;
   int ret = system("java display.java");  // Major security flaw
   if (ret < 0) {
@@ -45,7 +46,7 @@ int CPL::create_txt_file() {
 	outfile << "CPL\n";
 	outfile << "seat: "<< seats_ << "\n";
 	outfile << "ballots: " << ballots_ << "\n";
-	outfile << "Nmuber of Candidates: " << candidates_ << "\n";
+	outfile << "Number of Candidates: " << candidates_ << "\n";
 	for (int i = 0; i < sizep; i++)
 	{
 		Party* party = parties_[i];
