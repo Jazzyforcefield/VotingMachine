@@ -48,7 +48,7 @@ int CPL::create_txt_file() {
 		outfile << "It won " << party->seats_won << " seates\n";
 		int seats_lol = party->seats_won;
 		outfile << "Winners are: ";
-		int index = 0
+		int index = 0;
 		if (seats_lol->seats_won != 0)
 		{
 			outfile << party->members[index] << ", ";
