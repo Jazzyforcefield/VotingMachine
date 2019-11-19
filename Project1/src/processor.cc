@@ -12,7 +12,7 @@ int Processor::process() {
   std::ifstream f;
   std::ofstream o;
   std::string line;
-  std::vector<string>;
+  std::string part;
 
   int result = f.open(fname_);
   if (result < 0) {
@@ -56,6 +56,7 @@ int Processor::process() {
     party_count = std::stoi(line);
     std::getline(f, line);
     o << line << std::endl;
+    part = line;
 
     std::getline(f, line);
     o << line << std::endl;
@@ -71,8 +72,16 @@ int Processor::process() {
 
     int broken = 0;
     int j = 0;
+    std::vector<string> partytokens;
+    stringstream partystream(part);
+    std::string temp;
+    while (std::getline(partystream, temp, ',') {
+      partytokens.push_back(temp);
+    }
+
     for (int i = 0; i < party_count; i++) {
       Party * party = new Party();
+      party->name = partytokens[i];
       if (broken == 1) {
         parse_CPL_line(party, line);
         broken = 0;
@@ -110,15 +119,58 @@ int Processor::process() {
 }
 
 int Processor::parse_OPL_line(Candidate * candidate, string line) {
-  std::vector
+  std::vector<string> tokens;
+  stringstream linestream(line);
+
+  string temp;
+
+  while (std::getline(linestream, temp, ',')) {
+    tokens.push_back(temp);
+  }
+
+  if (tokens.size() != 2) {
+    std::cout << "Invalid amount of tokens" << std::endl;
+    return -1;
+  }
+
+  candidate->name_ = tokens[0];
+  candidate->party_ = tokens[1];
+  return 0;
 }
 
 int Processor::parse_CPL_line(Party * party, string line) { // Sets party attributes
+  std::vector<string> tokens;
+  stringstream linestream(line);
 
+  string temp;
+
+  while (std::getline(linestream, temp, ',')) {
+    tokens.push_back(temp);
+  }
+
+  if (tokens.size() != 3) {
+    std::cout << "Invalid amount of tokens" << std::endl;
+    return -1;
+  }
+
+  party->members_.push_back(tokens[0]);
+  return 0;
 }
 
 int Processor::get_one_index(std::string line) {
+  std::vector<string> tokens;
+  stringstream linestream(line);
+  int count;
+  string temp;
 
+  while (std::getline(linestream, temp, ',')) {
+    if (temp.compare("1")) {
+      return count;
+    }
+    count++;
+  }
+
+  return count;
 }
 
 /*
