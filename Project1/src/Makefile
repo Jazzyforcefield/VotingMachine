@@ -15,3 +15,4 @@ $(EXEFILE): $(OBJFILES)
 clean:
 	rm -f *.o
 	rm -f $(EXEFILE)
+	rm -f audit.txt
