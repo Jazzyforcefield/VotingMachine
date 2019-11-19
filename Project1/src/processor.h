@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "votingtype.h" 
+#include "VotingType.h" 
 
 class Processor {
  public:

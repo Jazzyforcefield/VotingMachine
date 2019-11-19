@@ -170,7 +170,7 @@ int Processor::get_one_index(std::string line) {
     count++;
   }
 
-  return count;
+  return -1;
 }
 
 /*
