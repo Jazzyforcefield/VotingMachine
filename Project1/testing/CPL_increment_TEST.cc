@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-#include "src/cpl.h"
+#include "../src/CPL.h"
 #include "gtest/gtest.h"
 
 // Test feature for CPL class

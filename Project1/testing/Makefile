@@ -25,6 +25,9 @@ GTEST_DIR = ../../googletest
 # Where to find user code.
 USER_DIR = .
 
+CODEFILES = $(wildcard ../src/*.cc) $(wildcard ../src/*.cpp)
+COBJFILES = $(notdir $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(CODEFILES))))
+
 SRCFILES = $(wildcard *.cc) $(wildcard *.cpp)
 OBJFILES = $(notdir $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(SRCFILES))))
 
@@ -45,6 +48,7 @@ TESTS = vote_unittest
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h
 
+INCLUDEDIR = -I../src
 # House-keeping build targets.
 
 all : $(TESTS)
@@ -80,9 +84,16 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-%.o : $(USER_DIR)/%.cc \
-                     $(USER_DIR)/%.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/%.cc
+$(USER_DIR)/../src/%.o: $(USER_DIR)../src/%.cc
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) -c $<
 
-vote_unittest : $(OBJFILES) gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+%.o : $(USER_DIR)/%.cc \
+                     $(USER_DIR)/%.h $(GTEST_HEADERS) $(CODEFILES)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) -c $(USER_DIR)/../src/%.cc
+
+%.o : $(USER_DIR)/%.cpp \
+                     $(USER_DIR)/%.h $(GTEST_HEADERS) $(CODEFILES)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) -c $(USER_DIR)/../src/%.cpp
+
+vote_unittest : $(OBJFILES) gtest_main.a $(COBJFILES)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) $^ -o $@
