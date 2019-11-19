@@ -24,7 +24,7 @@ int Processor::process() {
 
   std::getline(f, line);
   o << line << std::endl;
-  if (line.compare("OPL") == 0) {
+  if (line.compare("OPL\n") == 0) {
     int seats, ballots, candidates;
 
     std::getline(f, line);
@@ -46,13 +46,13 @@ int Processor::process() {
       parse_OPL_line(cand, line);
       vote_->get_candidates()->push_back(cand);
     }
-  } else if (line.compare("CPL")) {
+  } else if (line.compare("CPL\n")) {
     int party_count, seats, ballots, candidates;
     std::getline(f, line);
     o << line << std::endl;
     party_count = std::stoi(line);
     std::getline(f, line);
-    o << line << std::endl;
+    o << "[" << line << "]" << std::endl;
     part = line;
 
     std::getline(f, line);
