@@ -1,17 +1,17 @@
 #ifndef _OPL_H
 #define _OPL_H
 
-#include "candidate.h"
-#include "VotingType.h"
-
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
 
+#include "candidate.h"
+#include "VotingType.h"
+
 class OPL : public VotingType {
-public:
+ public:
 	OPL(int seats, int ballots, int candidates);
 	std::vector<Candidate*>* get_candidates();
 	int increment(int index);
@@ -19,7 +19,7 @@ public:
 	int create_txt_file();
 	int Display();
 
-private:
+ private:
 	std::vector<Candidate*> candidates_;
 };
 
