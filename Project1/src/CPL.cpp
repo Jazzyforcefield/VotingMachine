@@ -45,7 +45,7 @@ int CPL::create_txt_file() {
 		Party* party = parties[i];
 		outfile << "For party \""<< party->name << "\":\n";
 		outfile << "It won " << party->seats_won << " seates\n";
-		outfile << "Winners are \"" << party->name << "\":\n";
+		outfile << "Winners are \"" << party->candidates.pop_back() << "\":\n";
 	}
 
 }
