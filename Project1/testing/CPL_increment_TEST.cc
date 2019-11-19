@@ -141,6 +141,9 @@ TEST_F(CPLTests, CPLIncrementTest) {
 
 	EXPECT_EQ(cpl_test_case1_->increment(6), -1) << "There should not exist the seventh party.";
 	EXPECT_EQ(cpl_test_case1_->increment(-1), -1) << "increment() index should not be negative number";
+	EXPECT_EQ(cpl_test_case2_->increment(2.37), -1) << "increment() index should not be a double or float";
+	EXPECT_EQ(cpl_test_case2_->increment("string"), -1) << "increment() index should not be a string";
+
 
 	cpl_test_case2_->increment(2);
 	EXPECT_EQ(*parties[2].votes_, 1);
@@ -159,7 +162,8 @@ TEST_F(CPLTests, CPLIncrementTest) {
 
 	EXPECT_EQ(cpl_test_case2_->increment(10), -1) << "There should not exist the seventh party.";
 	EXPECT_EQ(cpl_test_case2_->increment(-5), -1) << "increment() index should not be negative number";
-
+	EXPECT_EQ(cpl_test_case2_->increment(6.07), -1) << "increment() index should not be a double or float";
+	EXPECT_EQ(cpl_test_case2_->increment("string"), -1) << "increment() index should not be a string";
 	
 }
 
