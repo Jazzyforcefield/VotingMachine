@@ -12,10 +12,10 @@ int Processor::process() {
   std::string line;
   std::string part;
 
-  /*if (!f) {
+  if (!f) {
     std::cout << "Invalid file" << std::endl;
     return -1;
-  }*/
+  }
 
   if (!o) {
     std::cout << "Error occurred in opening audit file" << std::endl;
