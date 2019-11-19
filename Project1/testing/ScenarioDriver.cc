@@ -6,7 +6,7 @@
 #include "src/processor.h"
 
 int verbose;
-string filename;
+std::string filename;
 
 int main(int argc, char ** argv) {
   if (argc == 1) {
