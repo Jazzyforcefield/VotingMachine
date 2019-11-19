@@ -34,7 +34,7 @@ OBJFILES = $(notdir $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(SRCFILES))))
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
 # the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -isystem $(GTEST_DIR)/include
+CPPFLAGS += -isystem $(GTEST_DIR)/include -I../src -I..
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -g -Wall -Wextra -pthread
@@ -48,7 +48,6 @@ TESTS = vote_unittest
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h
 
-INCLUDEDIR = -I../src
 # House-keeping build targets.
 
 all : $(TESTS)
@@ -85,15 +84,15 @@ gtest_main.a : gtest-all.o gtest_main.o
 # function.
 
 $(USER_DIR)/../src/%.o: $(USER_DIR)../src/%.cc
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) -c $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
 
 %.o : $(USER_DIR)/%.cc \
                      $(USER_DIR)/%.h $(GTEST_HEADERS) $(CODEFILES)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) -c $(USER_DIR)/../src/%.cc
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/../src/%.cc
 
 %.o : $(USER_DIR)/%.cpp \
                      $(USER_DIR)/%.h $(GTEST_HEADERS) $(CODEFILES)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) -c $(USER_DIR)/../src/%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/../src/%.cpp
 
 vote_unittest : $(OBJFILES) gtest_main.a $(COBJFILES)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEDIR) $^ -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@

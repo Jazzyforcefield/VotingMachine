@@ -2,6 +2,7 @@
 #define _PROCESSOR_H
 
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <iostream>
 #include <fstream>
