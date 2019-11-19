@@ -1,0 +1,24 @@
+Scenario: A scenario with four seats left and unique vote totals.
+
+OPL
+4 seats
+16 ballots cast
+6 candidates
+
+Pike,D    5 votes
+Foster,D  4 votes
+Deutsch,R 3 votes
+Borg,R    2 votes
+Jones,R   1 votes
+Smith,I   0 votes
+
+[Pike,D]    -- Should be the first winner
+
+[Foster,D]    -- Should be the second winner
+
+[Deutsch,R]   -- Should be the third winner
+
+[Borg,R]    -- Should be the last winner
+
+The result should have these four as the winners.
+
