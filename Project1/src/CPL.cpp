@@ -31,6 +31,7 @@ int CPL::Display() {
 }
 
 int CPL::create_txt_file() {
+	CPL::winner();
 	vector<Party*> parties = *CPL::get_parties();
 	int sizep = parties.size();
 	ofstream outfile;
@@ -56,7 +57,10 @@ int CPL::winner()
 	vector<Party*> parties = *CPL::get_parties();
 	int threshold = std::ceil((double)ballots_ / (double)seats_);
 	int sizep = parties.size();
-	int total_seats = 0
+	int total_seats = 0;
+	vector<int> remain;
+	vector<int> max;
+	int maximum = 0;
 	for (int i = 0; i< sizep; i++)
 	{
 		Party* party = parties[i];
@@ -65,11 +69,75 @@ int CPL::winner()
 		int rem = party->votes - get_seats * threshold;
 		party->seats_won = get_seats;
 		party->reminder = rem;
+		
+		if (max.empty() || rem == maximum)
+		{
+			max.push_back(i);
+		}
+		else if (rem> maximum)
+		{
+			max.clear();
+			max.push_back(i);
+			maximum = rem;
+		}
+		remain.push_back(rem);
 	}
+
 
 	while (total_seats < seats_)
 	{
-
+		if (max.size() <= seats_ - total_seats)
+		{
+			for (int i = 0; i < max.size(); i++)
+			{
+				parties[max[i]]->seats_won++;
+				total_seats++;
+				parties[max[i]]->reminder = 0;
+			}
+			maximum = 0;
+			max.clear();
+			for (int j = 0; j < sizep; j++)
+			{
+				Party* party = parties[i];
+				rem = party->reminder;
+				if (max.empty() || rem == maximum)
+				{
+					max.push_back(i);
+				}
+				else if (rem > maximum)
+				{
+					max.clear();
+					max.push_back(i);
+					maximum = rem;
+				}
+			}
+		}
+		else
+		{
+			int seats_left = seats_ - total_seats;
+			vector<int> random;
+			for (int i = 0; i < max.size(); i++)
+			{
+				int iSecret = rand() % 10 + 1;
+				random.push_back(iSecret);
+			}
+			while (seats_left > 0)
+			{
+				int max_random = random[0];
+				int index = 0;
+				for (int i = 0; i < max.size(); i++)
+				{
+					if (random[i] > max_random)
+					{
+						max_random = random[i];
+						index = i;
+					}
+				}
+				parties[max[index]]->seats_won++;
+				seats_left -= 1;
+			}
+			
+		}
 	}
 
 }
