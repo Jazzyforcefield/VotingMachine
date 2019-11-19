@@ -2,14 +2,13 @@
 #define _CANDIDATE_H
 
 #include <iostream>
-using namespace std;
 
 class Candidate {
  public:
-  int won;
-  string name;
-  string party;
-  int votes;
+  int won_;
+  std::string name_;
+  std::string party_;
+  int votes_;
 };
 
 #endif

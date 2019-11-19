@@ -17,7 +17,7 @@ int OPL::increment(int index) {
 		return -1;
 	}
 
-	(*candidates_[index]).votes++;
+	(*candidates_[index]).votes_++;
 
 	return 0;
 

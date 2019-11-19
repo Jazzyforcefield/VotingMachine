@@ -9,12 +9,12 @@
 
 class Party {
  public:
-	Party(string party_name = "") { name = party_name; }
-	string name;
-	int votes;
-	int seats_won = 0;
-	int reminder = 0;
-	std::vector<string> members;
+	Party(std::string party_name = "") { name_ = party_name; }
+	std::string name_;
+	int votes_;
+	int seats_won_ = 0;
+	int remainder_ = 0;
+	std::vector<std::string> members_;
 };
 
 #endif  // _PARTY_H
