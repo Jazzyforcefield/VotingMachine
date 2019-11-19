@@ -2,8 +2,14 @@
 #define _PROCESSOR_H
 
 #include <string>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
 
 #include "VotingType.h" 
+#include "CPL.h"
+#include "OPL.h"
 
 class Processor {
  public:

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
+// Copyright 2019, CSCI 5801 Team 25
 
 #include "processor.h"
 
@@ -9,19 +7,17 @@ Processor::Processor(std::string fname) {
 }
 
 int Processor::process() {
-  std::ifstream f;
-  std::ofstream o;
+  std::ifstream f(fname_);
+  std::ofstream o("audit.txt");
   std::string line;
   std::string part;
 
-  int result = f.open(fname_);
-  if (result < 0) {
+  if (!f) {
     std::cout << "Invalid file" << std::endl;
     return -1;
   }
 
-  result = o.open("audit.txt");
-  if (result < 0) {
+  if (!o) {
     std::cout << "Error occurred in opening audit file" << std::endl;
     return -1;
   }
@@ -75,7 +71,7 @@ int Processor::process() {
     std::vector<string> partytokens;
     stringstream partystream(part);
     std::string temp;
-    while (std::getline(partystream, temp, ',') {
+    while (std::getline(partystream, temp, ',')) {
       partytokens.push_back(temp);
     }
 
@@ -133,8 +129,8 @@ int Processor::parse_OPL_line(Candidate * candidate, string line) {
     return -1;
   }
 
-  candidate->name_ = tokens[0];
-  candidate->party_ = tokens[1];
+  candidate->name = tokens[0];
+  candidate->party = tokens[1];
   return 0;
 }
 
@@ -153,7 +149,7 @@ int Processor::parse_CPL_line(Party * party, string line) { // Sets party attrib
     return -1;
   }
 
-  party->members_.push_back(tokens[0]);
+  party->members.push_back(tokens[0]);
   return 0;
 }
 
