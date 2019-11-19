@@ -13,5 +13,5 @@ $(EXEFILE): $(OBJFILES)
 	g++ $(OBJFILES) -o $@
 
 clean:
-	rm -rf *.o
-	rm -rf $(EXEFILE)
+	rm -f *.o
+	rm -f $(EXEFILE)
