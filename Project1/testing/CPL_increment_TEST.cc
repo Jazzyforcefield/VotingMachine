@@ -1,16 +1,20 @@
-#include "src/cpl.h"
+//Copyright 2019, Zhuoran Bi CSCI 5801
+
 #include <string>
+#include <iostream>
+
+#include "src/cpl.h"
 #include "gtest/gtest.h"
 
-// The fixture for testing class Foo.
+// Test feature for CPL class
 class CPLTests : public ::testing::Test {
 	protected:
-	// Put member variables here
 	CPL* cpl_test_case1_;
 	CPL* cpl_test_case2_;
 
 	void SetUp() override { // Initialize things here
 		
+		cpl_test_case1_ = new CPL(5, 60, 21);
 		int n_parties = 6;
 		vector<Party*>* parties;
 		char party_name = 'A';
@@ -20,7 +24,7 @@ class CPLTests : public ::testing::Test {
 			std::string s(1, party_name);
 			Party->name_ = s;
 			Party->vote_ = 0;
-			vector<string> members;
+			vector<std::string> members;
 			char member_name = 'a';
 			for (int j = 0; j <= i; j++)
 			{
@@ -32,27 +36,27 @@ class CPLTests : public ::testing::Test {
 			party_name++;
 			parties.push_back(party);
 		}
-		cpl_test_case1_ = new CPL(5,60,21,parties);
 		
-		vector<string> party1_member;
+		
+		vector<std::string> party1_member;
 		party1_member.push_back("Ali");
 		party1_member.push_back("Jeffrey");
 		party1_member.push_back("Imran");
 		party1_member.push_back("Hassan");
 
-		vector<string> party2_member;
+		vector<std::string> party2_member;
 		party2_member.push_back("Austin");
 		party2_member.push_back("Rafi");
 		party2_member.push_back("Logan");
 		
-		vector<string> party3_member;
+		vector<std::string> party3_member;
 		party3_member.push_back("Branden");
 		party3_member.push_back("Alan");
 		party3_member.push_back("Jacob");
 		party3_member.push_back("Daniel");
 		party3_member.push_back("Branden");
 
-		vector<string> party4_member;
+		vector<std::string> party4_member;
 		party4_member.push_back("Alexander");
 		party4_member.push_back("Xiaohui");
 		party4_member.push_back("Berni");
@@ -60,7 +64,7 @@ class CPLTests : public ::testing::Test {
 		party4_member.push_back("Celeb");
 		party4_member.push_back("Raymond");
 
-		vector<string> party5_member;
+		vector<std::string> party5_member;
 		party5_member.push_back("Andrew");
 		party5_member.push_back("Jack");
 		party5_member.push_back("Erik");
@@ -109,7 +113,7 @@ class CPLTests : public ::testing::Test {
 	}
 };
 
-// Tests that the Foo::Bar() method does Abc.
+// Tests that CPL::increament() method.
 TEST_F(CPLTests, CPLIncrementTest) {
 	vector<Party *> * parties = cpl_test_case1_->get_parties();
 	//EXPECT_EQ(*parties[1].name_, "G");
@@ -167,9 +171,11 @@ TEST_F(CPLTests, CPLIncrementTest) {
 	
 }
 
+
+// Tests that CPL::get_party() method.
 TEST_F(CPLTests, CPL_Get_Party_Test) {
 	vector<Party*>* parties1 = cpl_test_case1_->get_parties();
-	string party_name = "A";
+	std::string party_name = "A";
 	for (int each_party; each_party < parties1.size(); each_party++)
 	{
 		std::string s(1, party_name);
