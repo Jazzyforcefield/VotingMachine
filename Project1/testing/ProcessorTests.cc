@@ -15,9 +15,9 @@ class ProcessorTests : public ::testing::Test {
 
   void SetUp() override {
     // Initializing different file names or scenarios for each processor
-    processor_ = new Processor("filename.csv");
-    processor2_ = new Processor("filename2.csv");
-    processor3_ = new Processor("nonexistentbadspaces orbadextension.badext");
+    processor_ = new Processor("OPLScenario1.csv");
+    processor2_ = new Processor("CPLScenari1.csv");
+    processor3_ = new Processor("badfile.abc");
   }
 
   void TearDown() override {
