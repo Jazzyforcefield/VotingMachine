@@ -1,10 +1,6 @@
 #include "CPL.h"
 
-CPL::CPL(int seats_, int ballots_, int candidates): 	VotingType(seats_, ballots_, candidates) {
-
-
-
-}
+CPL::CPL(int seats_, int ballots_, int candidates): VotingType(seats_, ballots_, candidates)  {}
 
 std::vector<Party*>* CPL::get_parties() {
 	return &parties_;

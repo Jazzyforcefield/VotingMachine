@@ -9,13 +9,11 @@
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
-using namespace std;
 
-class OPL : public VotingType
-{
+class OPL : public VotingType {
 public:
 	OPL(int seats, int ballots, int candidates);
-	vector<Candidate*>* get_candidates();
+	std::vector<Candidate*>* get_candidates();
 	int increment(int index);
 	int winner();
 	int create_txt_file();
@@ -24,4 +22,5 @@ public:
 private:
 	std::vector<Candidate*> candidates_;
 };
+
 #endif

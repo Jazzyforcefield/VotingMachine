@@ -1,14 +1,15 @@
 #ifndef _CPL_H
 #define _CPL_H
 
-#include "party.h"
-#include "candidate.h"
-#include "VotingType.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
+
+#include "party.h"
+#include "candidate.h"
+#include "VotingType.h"
 
 
 class CPL : public VotingType {
