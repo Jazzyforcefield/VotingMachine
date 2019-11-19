@@ -113,6 +113,7 @@ int Processor::process() {
     int index = get_one_index(line);
     vote_->increment(index);
   }
+  vote_->Display();
 }
 
 int Processor::parse_OPL_line(Candidate * candidate, string line) {

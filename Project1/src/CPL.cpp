@@ -1,3 +1,7 @@
+// Copyright 2019, CSCI 5801, Team 25
+
+#include <cstdlib>
+
 #include "CPL.h"
 
 CPL::CPL(int seats_, int ballots_, int candidates): VotingType(seats_, ballots_, candidates)  {}
@@ -23,6 +27,11 @@ int CPL::increment(int index) {
 }
 
 int CPL::Display() {
+  std::cout << "Displaying GUI" << std::endl;
+  int ret = system("java display.java");  // Major security flaw
+  if (ret < 0) {
+    return -1;
+  } 
 	return 0;
 }
 

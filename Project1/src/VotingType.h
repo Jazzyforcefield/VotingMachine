@@ -11,6 +11,7 @@ class VotingType {
  public:
 	VotingType(int seats, int ballots, int candidates) : seats_(seats), ballots_(ballots), candidates_(candidates) {};
 	virtual int increment(int index) = 0;
+  virtual int Display() = 0;
   virtual std::vector<Party *> * get_parties() { return NULL; }
   virtual std::vector<Candidate *> * get_candidates() { return NULL; }
   int get_seats() { return seats_; }
