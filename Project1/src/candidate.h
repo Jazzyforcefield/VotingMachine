@@ -7,6 +7,7 @@ using namespace std;
 class Candidate
 {
 private:
+    int won;
     string name;
     string party;
     int votes;
