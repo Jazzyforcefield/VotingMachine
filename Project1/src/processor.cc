@@ -12,10 +12,10 @@ int Processor::process() {
   std::string line;
   std::string part;
 
-  if (!f) {
+  /*if (!f) {
     std::cout << "Invalid file" << std::endl;
     return -1;
-  }
+  }*/
 
   if (!o) {
     std::cout << "Error occurred in opening audit file" << std::endl;
@@ -23,6 +23,7 @@ int Processor::process() {
   }
 
   std::getline(f, line);
+  o << line << std::endl;
   if (line.compare("OPL") == 0) {
     int seats, ballots, candidates;
 
@@ -43,7 +44,7 @@ int Processor::process() {
       std::getline(f, line);
       o << line << std::endl;
       parse_OPL_line(cand, line);
-      vote_->candidates_->push_back(cand);
+      vote_->get_candidates()->push_back(cand);
     }
   } else if (line.compare("CPL")) {
     int party_count, seats, ballots, candidates;
@@ -102,9 +103,9 @@ int Processor::process() {
   }
 
   // Start processing the votes
-  int seats = vote_->seats_;
-  int ballots = vote_->ballots_;
-  int candidates = vote_->candidates_;
+  int seats = vote_->get_seats();
+  int ballots = vote_->get_ballots();
+  int candidates = vote_->get_candidates_num();
 
   for (int i = 0; i < ballots; i++) {
     std::getline(f, line);
@@ -167,6 +168,15 @@ int Processor::get_one_index(std::string line) {
   }
 
   return -1;
+}
+
+int main() {
+  string file_name;
+  std::cout << "Enter file name: ";
+  cin >> file_name;
+
+  Processor * processor = new Processor(file_name);  
+  processor->process();
 }
 
 /*

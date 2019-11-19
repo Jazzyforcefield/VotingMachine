@@ -7,13 +7,12 @@
 #include <fstream>
 #include <cstdlib>
 
-#include "VotingType.h" 
 #include "CPL.h"
 #include "OPL.h"
 
 class Processor {
  public:
-  Processor(std::string fname);
+  Processor(std::string fname = "");
   int process();
   int parse_OPL_line(Candidate * candidate, string line);
   int parse_CPL_line(Party * party, string line);

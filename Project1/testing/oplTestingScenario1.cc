@@ -1,4 +1,4 @@
-#include "src/opl.h"
+#include "../src/OPL.h"
 
 #include "gtest/gtest.h"
 
