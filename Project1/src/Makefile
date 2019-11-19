@@ -1,21 +1,23 @@
 # Makefile to make the voting_system executable and the Java display
 
 EXEFILE = voting_system
-DISPLAY = display
 SRCFILES = $(wildcard *.cpp) $(wildcard *.cc)
 OBJFILES = $(notdir $(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(SRCFILES))))
+
+JAVAFILES = $(wildcard *.java)
+JAVACLASSES = $(JAVAFILES:.java=.class)
 
 .PHONY: clean
 
 all: $(EXEFILE)
 
-$(DISPLAY): display.java
+%.class: %.java
 	javac display.java
 
 %.o: %.cc
 	g++ -c $< -o $@
 
-$(EXEFILE): $(OBJFILES) | $(DISPLAY)
+$(EXEFILE): $(OBJFILES) | $(JAVACLASSES)
 	g++ $(OBJFILES) -o $@
 
 clean:
