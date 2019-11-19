@@ -8,12 +8,18 @@
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
+using namespace std;
 
-class CPL {
+class CPL 
+{
 public:
 	CPL(int seats, int ballots, int candidates);
 	vector<Party*>* get_parties();
 	int increment(int index);
+	int winner();
+	int create_txt_file();
+	int Display();
+
 private:
 	std::vector<Party*> parties_;
 };

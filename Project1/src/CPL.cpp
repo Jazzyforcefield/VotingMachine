@@ -46,7 +46,16 @@ int CPL::create_txt_file() {
 		Party* party = parties[i];
 		outfile << "For party \""<< party->name << "\":\n";
 		outfile << "It won " << party->seats_won << " seates\n";
-		outfile << "Winners are \"" << party->name << "\":\n";
+		int seats_lol = party->seats_won;
+		outfile << "Winners are: ";
+		int index = 0
+		if (seats_lol->seats_won != 0)
+		{
+			outfile << party->members[index] << ", ";
+			index++;
+			seats_lol--;
+		}
+		
 	}
 
 }
@@ -139,5 +148,6 @@ int CPL::winner()
 			
 		}
 	}
+	return 0;
 
 }
