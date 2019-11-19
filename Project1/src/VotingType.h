@@ -1,9 +1,6 @@
 #ifndef _VOTINGTYPE_H
 #define _VOTINGTYPE_H
-#include "party.h"
-#include "candidate.h"
-#include "CPL.h"
-#include "OPL.h"
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -11,9 +8,9 @@ using namespace std;
 class VotingType
 {
 public:
-	VotingType(int seats, int ballots, int candidates);
+	VotingType(int seats, int ballots, int candidates): seats_(seats), ballots_(ballots), candidates_(candidates) {};
 	int increment(int index);
-private:
+protected:
 	int seats_;
 	int ballots_;
 	int candidates_;

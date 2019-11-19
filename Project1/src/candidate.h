@@ -6,7 +6,7 @@ using namespace std;
 
 class Candidate
 {
-private:
+public:
     int won;
     string name;
     string party;

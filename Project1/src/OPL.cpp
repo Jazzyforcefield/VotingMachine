@@ -34,8 +34,8 @@ int OPL::create_txt_file() {
 
 }
 
-int CPL::winner()
-{
+int OPL::winner()
+{ /*
 	vector<Party*> winner;
 	vector<Party*> parties = *CPL::get_parties();
 	int threshold = std::ceil((double)ballots_ / (double)seats_);
@@ -121,7 +121,7 @@ int CPL::winner()
 			}
 
 		}
-	}
+	}*/
 	return 0;
 
 }

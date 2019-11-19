@@ -43,7 +43,7 @@ int Processor::process() {
       std::getline(f, line);
       o << line << std::endl;
       parse_OPL_line(cand, line);
-      vote_->get_candidates()->push_back(cand);
+      vote_->candidates_->push_back(cand);
     }
   } else if (line.compare("CPL")) {
     int party_count, seats, ballots, candidates;
@@ -102,9 +102,9 @@ int Processor::process() {
   }
 
   // Start processing the votes
-  int seats = vote_->get_seats();
-  int ballots = vote_->get_ballots();
-  int candidates = vote_->get_candidates();
+  int seats = vote_->seats_;
+  int ballots = vote_->ballots_;
+  int candidates = vote_->candidates_;
 
   for (int i = 0; i < ballots; i++) {
     std::getline(f, line);

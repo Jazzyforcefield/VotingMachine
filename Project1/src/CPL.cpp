@@ -1,7 +1,7 @@
 #include "CPL.h"
 
-CPL::CPL(int seats, int ballots, int candidates) {
-	VotingType(seats, ballots, candidates);
+CPL::CPL(int seats_, int ballots_, int candidates): 	VotingType(seats_, ballots_, candidates) {
+
 
 
 }
@@ -38,8 +38,8 @@ int CPL::create_txt_file() {
 	string new_file_name = "textfile.txt";
 	outfile.open(new_file_name);
 	outfile << "CPL\n";
-	outfile << "Seats: "<<seats_<< "\n";
-	outfile << "Ballots: " << ballots_ << "\n";
+	outfile << "seat: "<<seats_<< "\n";
+	outfile << "ballots: " << ballots_ << "\n";
 	outfile << "Nmuber of Candidates: " << candidates_ << "\n";
 	for (int i = 0; i < sizep; i++)
 	{
@@ -49,7 +49,7 @@ int CPL::create_txt_file() {
 		int seats_lol = party->seats_won;
 		outfile << "Winners are: ";
 		int index = 0;
-		if (seats_lol->seats_won != 0)
+		if (party->seats_won != 0)
 		{
 			outfile << party->members[index] << ", ";
 			index++;
@@ -70,7 +70,7 @@ int CPL::winner()
 	vector<int> remain;
 	vector<int> max;
 	int maximum = 0;
-	for (int i = 0; i< sizep; i++)
+	for (int i = 0; i < sizep; i++)
 	{
 		Party* party = parties[i];
 		int get_seats = floor((double)party->votes / (double)threshold);
@@ -107,16 +107,16 @@ int CPL::winner()
 			max.clear();
 			for (int j = 0; j < sizep; j++)
 			{
-				Party* party = parties[i];
-				rem = party->reminder;
+				Party* party = parties[j];
+				int rem = party->reminder;
 				if (max.empty() || rem == maximum)
 				{
-					max.push_back(i);
+					max.push_back(j);
 				}
 				else if (rem > maximum)
 				{
 					max.clear();
-					max.push_back(i);
+					max.push_back(j);
 					maximum = rem;
 				}
 			}

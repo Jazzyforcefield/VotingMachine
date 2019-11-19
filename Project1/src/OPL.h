@@ -1,8 +1,9 @@
 #ifndef _OPL_H
 #define _OPL_H
-#include "party.h"
+
 #include "candidate.h"
 #include "VotingType.h"
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -10,7 +11,7 @@
 #include <cmath>
 using namespace std;
 
-class OPL
+class OPL : public VotingType
 {
 public:
 	OPL(int seats, int ballots, int candidates);

@@ -1,5 +1,6 @@
 #ifndef _CPL_H
 #define _CPL_H
+
 #include "party.h"
 #include "candidate.h"
 #include "VotingType.h"
@@ -8,13 +9,12 @@
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
-using namespace std;
 
-class CPL 
-{
+
+class CPL : public VotingType {
 public:
 	CPL(int seats, int ballots, int candidates);
-	vector<Party*>* get_parties();
+	std::vector<Party*>* get_parties();
 	int increment(int index);
 	int winner();
 	int create_txt_file();
