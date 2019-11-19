@@ -1,4 +1,3 @@
-
 #include "VotingType.h"
 
 VotingType::VotingType(int seats, int ballots, int candidates)

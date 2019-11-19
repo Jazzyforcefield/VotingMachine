@@ -5,6 +5,9 @@
 #include "VotingType.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <cstdlib>
+#include <cmath>
 
 class CPL {
 public:

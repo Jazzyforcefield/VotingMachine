@@ -7,7 +7,7 @@ OPL::OPL(int seats, int ballots, int candidates) {
 
 }
 
-std::vector<Candidate*> * OPL::get_candidates() {
+std::vector<Candidate*>* OPL::get_candidates() {
 	return &candidates_;
 }
 
@@ -23,5 +23,13 @@ int OPL::increment(int index) {
 
 	return 0;
 
+
+}
+
+int OPL::Display() {
+
+}
+
+int OPL::create_txt_file() {
 
 }
