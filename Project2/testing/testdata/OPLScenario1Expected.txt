@@ -1,0 +1,23 @@
+Scenario: A tie with enough seats remaining.
+
+OPL
+3 seats
+9 ballots cast
+6 candidates
+
+Pike,D    3 votes
+Foster,D  2 votes
+Deutsch,R 0 votes
+Borg,R    2 votes
+Jones,R   1 votes
+Smith,I   1 votes
+
+Winner [Pike,D]   -- First assigned
+
+Winner [Foster,D]   -- These two are assigned next
+Winner [Borg,R]
+
+No tie-breakers needed since the amount of candidates
+in a tie are equal to the amount of seats available.
+
+
