@@ -113,6 +113,7 @@ int Processor::process() {
     int index = get_one_index(line);
     vote_->increment(index);
   }
+  vote_->CalculateWinners();
   vote_->Display();
 }
 

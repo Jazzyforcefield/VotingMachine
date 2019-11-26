@@ -37,7 +37,7 @@ int CPL::Display() {
 }
 
 int CPL::create_txt_file() {
-	int winnerc = CPL::winner();
+	int winnerc = CPL::CalculateWinners();
 	std::vector<Party*> parties = *CPL::get_parties();
 	int sizep = parties.size();
 	std::ofstream outfile;
@@ -66,7 +66,7 @@ int CPL::create_txt_file() {
 
 }
 
-int CPL::winner() {
+int CPL::CalculateWinners() {
 	std::vector<Party*> winner;
 	std::vector<Party*> parties = *CPL::get_parties();
 	int threshold = std::ceil((double)ballots_ / (double)seats_);

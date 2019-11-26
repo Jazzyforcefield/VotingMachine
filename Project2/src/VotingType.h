@@ -15,6 +15,7 @@ class VotingType {
   virtual int Display() = 0;
   virtual std::vector<Party *> * get_parties() { return NULL; }
   virtual std::vector<Candidate *> * get_candidates() { return NULL; }
+  virtual int CalculateWinners() = 0;
   int get_seats() { return seats_; }
   int get_ballots() { return ballots_; }
   int get_candidates_num() { return num_candidates_; }
