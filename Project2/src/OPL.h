@@ -24,9 +24,9 @@ class OPL : public VotingType {
    *
    * @param[out] Returns the max number of votes of a Candidate * vector
    **/
-  int GetMaxVotes();
+  int GetMaxVotes(std::vector<Candidate *>& intermediate);
   double GenerateRandomNumber(unsigned int seed = std::time(NULL));
-  int BreakTie(std::vector<Candidate *> tied_candidates);
+  int BreakTie(std::vector<Candidate *>& tied_candidates);
 	int create_txt_file();
 	int Display();
 

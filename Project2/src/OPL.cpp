@@ -16,7 +16,7 @@ int OPL::increment(int index) {
 	if (index > size_of_candidates - 1 || index < 0) {
 		return -1;
 	}
-  *candidates_[index].votes_++;
+  (*candidates_[index]).votes_++;
 
 	return 0;
 }
@@ -58,11 +58,11 @@ int OPL::CalculateWinners() {
 
     // Break a tie if present and assign seat
     if (tied_candidates.size() < 1) {
-      std::cout << "Unexpected error has occurred in function CalculateWinners!" std::endl;
+      std::cout << "Unexpected error has occurred in function CalculateWinners!" << std::endl;
       exit(1);
     } else {
       winner_index = BreakTie(tied_candidates);
-      tied_candidates->seat_winner_ = 1;
+      tied_candidates[winner_index]->seat_winner_ = 1;
       remaining_seats--;
     }
   }

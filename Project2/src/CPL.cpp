@@ -46,7 +46,7 @@ int CPL::create_txt_file() {
 	outfile << "CPL\n";
 	outfile << "seat: "<< seats_ << "\n";
 	outfile << "ballots: " << ballots_ << "\n";
-	outfile << "Number of Candidates: " << candidates_ << "\n";
+	outfile << "Number of Candidates: " << num_candidates_ << "\n";
 	for (int i = 0; i < sizep; i++)
 	{
 		Party* party = parties_[i];
