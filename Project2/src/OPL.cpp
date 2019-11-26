@@ -38,17 +38,50 @@ int OPL::CalculateWinners() {
   // Variables to track tied candidates and copy of candidate_ vector
   std::vector<Candidate *> tied_candidates;
   std::vector<Candidate *> intermediate(candidates_.begin(), candidates_.end());
-  int remaining_seats = seats_;
-  int max;
-  
+  int remaining_seats, max, winner_index;   // If you want the index of the winner, is it called Windex?
+  remaining_seats = seats_;
+  max = GetMaxVotes(intermediate);
+
+  // When there are still seats remaining, keep assigning seats
+  while (remaining_seats > 0) {
+
+    // Add all candidates with the same number of votes to the vector
+    if (tied_candidates.empty()) {
+      int sizec = static_cast<int>(intermediate.size());
+
+      for (int i = 0; i < sizec; i++) {
+        if (intermediate[i]->votes_ == max) {
+          tied_candidates.push_back(intermediate[i]);
+        }
+      }
+    }
+
+    // Break a tie if present and assign seat
+    if (tied_candidates.size() < 1) {
+      std::cout << "Unexpected error has occurred in function CalculateWinners!" std::endl;
+      exit(1);
+    } else {
+      winner_index = BreakTie(tied_candidates);
+      tied_candidates->seat_winner_ = 1;
+      remaining_seats--;
+    }
+  }
+
 	return 0;
 }
 
 int OPL::BreakTie(std::vector<Candidate *>& tied_candidates) {  // Returns index of winner
   int numc, seed, rmax, maxi;
+  double random_numbers[numc];
   numc = tied_candidates.size();
   seed = std::time(NULL);   // Technically insecure from security standpoint
-  double random_numbers[numc];
+
+  if (numc < 1) { // Ideally shoud never happen
+    std::cout << "Invalid number of candidates in function BreakTie" << std::endl;
+    return -1;
+  } else if (numc == 1) {
+    return 0;
+  }
 
   // Generate random numbers for each of the tied candidates
   for (int i = 0; i < numc; i++) {
@@ -69,7 +102,7 @@ int OPL::BreakTie(std::vector<Candidate *>& tied_candidates) {  // Returns index
 double OPL::GenerateRandomNumber(unsigned int seed) {
   // Setting the first seed to the current UNIX time, seed thereafter
   std::srand(seed);
-  return rand() * rand() / 73042.93;
+  return std::rand() * std::rand() / 73042.93;
 }
 
 int OPL::GetMaxVotes(std::vector<Candidate *>& intermediate) {

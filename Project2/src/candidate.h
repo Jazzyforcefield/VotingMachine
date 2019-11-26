@@ -5,7 +5,7 @@
 
 class Candidate {
  public:
-  int won_;
+  int seat_winner_;
   std::string name_;
   std::string party_;
   int votes_;
