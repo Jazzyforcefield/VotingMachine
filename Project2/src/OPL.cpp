@@ -26,10 +26,16 @@ int OPL::Display() {
 }
 
 int OPL::create_txt_file() {
+  int sizec = static_cast<int>(candidates_.size());
+  for (int i = 0; i < sizec; i++) {
+    std::cout << candidates_[i]->name_ << " " << candidates_[i]->party_ << std::endl;
+    std::cout << "Number of votes: " << candidates_[i]->votes_ << std::endl;
+  }
   return 0;
 }
 
 int OPL::CalculateWinners() {
+  std::cout << "CALCULATING" << std::endl;
   if (seats_ < 1 || num_candidates_ < seats_ || num_candidates_ < 0) {
     std::cout << "Invalid election parameters" << std::endl;
     return -1;
@@ -44,7 +50,7 @@ int OPL::CalculateWinners() {
 
   // When there are still seats remaining, keep assigning seats
   while (remaining_seats > 0) {
-
+  std::cout << "CALCULATING" << candidates_[0]->votes_ << std::endl;
     // Add all candidates with the same number of votes to the vector
     if (tied_candidates.empty()) {
       int sizec = static_cast<int>(intermediate.size());
@@ -63,6 +69,8 @@ int OPL::CalculateWinners() {
     } else {
       winner_index = BreakTie(tied_candidates);
       tied_candidates[winner_index]->seat_winner_ = 1;
+      tied_candidates.erase(tied_candidates.begin() + winner_index);
+      intermediate.erase(tied_candidates.begin() + winner_index);
       remaining_seats--;
     }
   }
