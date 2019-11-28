@@ -161,11 +161,11 @@ int Processor::parse_CPL_line(Party * party, std::string line) { // Sets party a
 int Processor::get_one_index(std::string line) {
   std::vector<std::string> tokens;
   std::stringstream linestream(line);
-  int count;
+  int count = 0;
   std::string temp;
 
   while (std::getline(linestream, temp, ',')) {
-    if (temp.compare("1")) {
+    if (!temp.compare("1")) {
       return count;
     }
     count++;

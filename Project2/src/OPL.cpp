@@ -26,6 +26,7 @@ int OPL::Display() {
 }
 
 int OPL::create_txt_file() {
+  std::cout << "Inside create_txt_file" << std::endl;
   int sizec = static_cast<int>(candidates_.size());
   for (int i = 0; i < sizec; i++) {
     std::cout << candidates_[i]->name_ << " " << candidates_[i]->party_ << std::endl;
@@ -44,20 +45,29 @@ int OPL::CalculateWinners() {
   // Variables to track tied candidates and copy of candidate_ vector
   std::vector<Candidate *> tied_candidates;
   std::vector<Candidate *> intermediate(candidates_.begin(), candidates_.end());
+  std::vector<int> tied_indices;
+  std::vector<int> indices;
   int remaining_seats, max, winner_index;   // If you want the index of the winner, is it called Windex?
   remaining_seats = seats_;
-  max = GetMaxVotes(intermediate);
+
+  for (int i = 0; i < num_candidates_; i++) {
+    indices.push_back(i);
+  }
 
   // When there are still seats remaining, keep assigning seats
   while (remaining_seats > 0) {
-  std::cout << "CALCULATING" << candidates_[0]->votes_ << std::endl;
+    std::cout << "SEATS: " << remaining_seats << std::endl;
+
     // Add all candidates with the same number of votes to the vector
     if (tied_candidates.empty()) {
       int sizec = static_cast<int>(intermediate.size());
+      max = GetMaxVotes(intermediate);
+      std::cout << "MAX: " << max << std::endl;
 
       for (int i = 0; i < sizec; i++) {
         if (intermediate[i]->votes_ == max) {
           tied_candidates.push_back(intermediate[i]);
+          tied_indices.push_back(indices[i]);
         }
       }
     }
@@ -70,7 +80,8 @@ int OPL::CalculateWinners() {
       winner_index = BreakTie(tied_candidates);
       tied_candidates[winner_index]->seat_winner_ = 1;
       tied_candidates.erase(tied_candidates.begin() + winner_index);
-      intermediate.erase(tied_candidates.begin() + winner_index);
+      tied_indices.erase(tied_indices.begin() + winner_index);
+      intermediate.erase(intermediate.begin() + tied_indices[winner_index]);
       remaining_seats--;
     }
   }
@@ -83,6 +94,7 @@ int OPL::BreakTie(std::vector<Candidate *>& tied_candidates) {  // Returns index
   double random_numbers[numc];
   numc = tied_candidates.size();
   seed = std::time(NULL);   // Technically insecure from security standpoint
+  maxi = 0;
 
   if (numc < 1) { // Ideally shoud never happen
     std::cout << "Invalid number of candidates in function BreakTie" << std::endl;

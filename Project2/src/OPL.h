@@ -13,7 +13,7 @@
 class OPL : public VotingType {
  public:
 	OPL(int seats, int ballots, int candidates);
-	std::vector<Candidate *> * get_candidates();
+	std::vector<Candidate *> * get_candidates() override;
 	int increment(int index);
 	int CalculateWinners();
 
