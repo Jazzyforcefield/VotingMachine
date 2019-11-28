@@ -30,7 +30,7 @@ int OPL::create_txt_file() {
   int sizec = static_cast<int>(candidates_.size());
   for (int i = 0; i < sizec; i++) {
     std::cout << candidates_[i]->name_ << " " << candidates_[i]->party_ << std::endl;
-    std::cout << "Number of votes: " << candidates_[i]->votes_ << std::endl;
+    std::cout << "Winner?: " << candidates_[i]->seat_winner_ << std::endl;
   }
   return 0;
 }
@@ -49,6 +49,7 @@ int OPL::CalculateWinners() {
   std::vector<int> indices;
   int remaining_seats, max, winner_index;   // If you want the index of the winner, is it called Windex?
   remaining_seats = seats_;
+  winner_index = -1;
 
   for (int i = 0; i < num_candidates_; i++) {
     indices.push_back(i);
@@ -78,10 +79,11 @@ int OPL::CalculateWinners() {
       exit(1);
     } else {
       winner_index = BreakTie(tied_candidates);
+      std::cout << "windex: " << winner_index << " size: " << tied_candidates.size() << std::endl;
       tied_candidates[winner_index]->seat_winner_ = 1;
       tied_candidates.erase(tied_candidates.begin() + winner_index);
+      intermediate[tied_indices[winner_index]]->votes_ = -1;
       tied_indices.erase(tied_indices.begin() + winner_index);
-      intermediate.erase(intermediate.begin() + tied_indices[winner_index]);
       remaining_seats--;
     }
   }
@@ -113,7 +115,7 @@ int OPL::BreakTie(std::vector<Candidate *>& tied_candidates) {  // Returns index
   rmax = random_numbers[0];
   for (int i = 0; i < numc; i++) {
     rmax = (random_numbers[i] >= rmax) ? random_numbers[i] : rmax;
-    maxi = (random_numbers[i] >= rmax) ? random_numbers[i] : maxi;
+    maxi = (random_numbers[i] >= rmax) ? i : maxi;
   }
 
   return maxi;
