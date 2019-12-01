@@ -9,20 +9,22 @@
 
 class VotingType {
  public:
-	VotingType(int seats, int ballots, int candidates) : seats_(seats), ballots_(ballots), candidates_(candidates) {};
+	VotingType(int seats, int ballots, int candidates) : seats_(seats), ballots_(ballots), num_candidates_(candidates) {};
   virtual ~VotingType() {};
 	virtual int increment(int index) = 0;
   virtual int Display() = 0;
   virtual std::vector<Party *> * get_parties() { return NULL; }
   virtual std::vector<Candidate *> * get_candidates() { return NULL; }
+  virtual int CalculateWinners() = 0;
+  virtual int create_txt_file() = 0;
   int get_seats() { return seats_; }
   int get_ballots() { return ballots_; }
-  int get_candidates_num() { return candidates_; }
+  int get_candidates_num() { return num_candidates_; }
 
  protected:
 	int seats_;
 	int ballots_;
-	int candidates_;
+	int num_candidates_;
 };
 
 #endif  // _VOTINGTYPE_H

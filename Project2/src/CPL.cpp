@@ -37,7 +37,7 @@ int CPL::Display() {
 }
 
 int CPL::create_txt_file() {
-	int winnerc = CPL::winner();
+	int winnerc = CPL::CalculateWinners();
 	std::vector<Party*> parties = *CPL::get_parties();
 	int sizep = parties.size();
 	std::ofstream outfile;
@@ -46,7 +46,7 @@ int CPL::create_txt_file() {
 	outfile << "CPL\n";
 	outfile << "seat: "<< seats_ << "\n";
 	outfile << "ballots: " << ballots_ << "\n";
-	outfile << "Number of Candidates: " << candidates_ << "\n";
+	outfile << "Number of Candidates: " << num_candidates_ << "\n";
 	for (int i = 0; i < sizep; i++)
 	{
 		Party* party = parties_[i];
@@ -66,7 +66,7 @@ int CPL::create_txt_file() {
 
 }
 
-int CPL::winner() {
+int CPL::CalculateWinners() {
 	std::vector<Party*> winner;
 	std::vector<Party*> parties = *CPL::get_parties();
 	int threshold = std::ceil((double)ballots_ / (double)seats_);

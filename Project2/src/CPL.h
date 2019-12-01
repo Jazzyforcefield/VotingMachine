@@ -17,7 +17,7 @@ public:
 	CPL(int seats, int ballots, int candidates);
 	std::vector<Party*>* get_parties();
 	int increment(int index);
-	int winner();
+	int CalculateWinners();
 	int create_txt_file();
 	int Display();
 

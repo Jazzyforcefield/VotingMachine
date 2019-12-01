@@ -24,7 +24,8 @@ int Processor::process() {
 
   std::getline(f, line);
   o << line << std::endl;
-  if (line.compare("OPL\n") == 0) {
+  std::cout << line << std::endl;
+  if (!line.compare("OPL")) {
     int seats, ballots, candidates;
 
     std::getline(f, line);
@@ -46,7 +47,7 @@ int Processor::process() {
       parse_OPL_line(cand, line);
       vote_->get_candidates()->push_back(cand);
     }
-  } else if (line.compare("CPL\n")) {
+  } else if (!line.compare("CPL")) {
     int party_count, seats, ballots, candidates;
     std::getline(f, line);
     o << line << std::endl;
@@ -113,7 +114,9 @@ int Processor::process() {
     int index = get_one_index(line);
     vote_->increment(index);
   }
+  vote_->CalculateWinners();
   vote_->Display();
+  vote_->create_txt_file();
 }
 
 int Processor::parse_OPL_line(Candidate * candidate, std::string line) {
@@ -158,11 +161,11 @@ int Processor::parse_CPL_line(Party * party, std::string line) { // Sets party a
 int Processor::get_one_index(std::string line) {
   std::vector<std::string> tokens;
   std::stringstream linestream(line);
-  int count;
+  int count = 0;
   std::string temp;
 
   while (std::getline(linestream, temp, ',')) {
-    if (temp.compare("1")) {
+    if (!temp.compare("1")) {
       return count;
     }
     count++;
