@@ -28,8 +28,8 @@ public:
 
 private:
 	std::vector<Party*> parties_;
-	std::map<int, std::vector<int>> remainder_to_index_;
-	std::set<int, std::greater<int>> remainder_;
+	std::map<int, std::vector<int> > remainder_to_index_;
+	std::set<int, std::greater<int> > remainder_;
 };
 
 #endif
