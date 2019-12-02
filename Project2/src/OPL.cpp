@@ -22,7 +22,12 @@ int OPL::increment(int index) {
 }
 
 int OPL::Display() {
-  return 0;
+  std::cout << "Displaying GUI" << std::endl;
+  int ret = system("java display.java");
+  if (ret < 0) {
+    return -1;
+  } 
+	return 0;
 }
 
 int OPL::create_txt_file() {

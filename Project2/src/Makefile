@@ -12,7 +12,7 @@ JAVACLASSES = $(JAVAFILES:.java=.class)
 all: $(EXEFILE)
 
 %.class: %.java
-	javac display.java
+	javac $<
 
 %.o: %.cpp
 	g++ -c $< -o $@
