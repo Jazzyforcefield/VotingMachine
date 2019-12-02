@@ -22,25 +22,36 @@ int OPL::increment(int index) {
 }
 
 int OPL::Display() {
-  std::cout << "Displaying GUI" << std::endl;
-  int ret = system("java display");
-  if (ret < 0) {
-    return -1;
-  } 
-	return 0;
+  return 0;
 }
 
 int OPL::create_txt_file() {
-  std::cout << "Inside create_txt_file" << std::endl;
-  int sizec = static_cast<int>(candidates_.size());
-  for (int i = 0; i < sizec; i++) {
-    std::cout << candidates_[i]->name_ << " " << candidates_[i]->party_ << std::endl;
-    std::cout << "Winner?: " << candidates_[i]->seat_winner_ << std::endl;
-  }
+  std::ofstream o("result.txt");
+    std::ifstream f("temp.txt");
+    std::string line;
+    if (!o) {
+        std::cout << "Error occurred in opening result file" << std::endl;
+        return -1;
+    }
+    if (!f) {
+        std::cout << "Invalid file" << std::endl;
+        return -1;
+    }
+
+    o << "Type of election : OPL"  << std::endl;
+    o << "Number of seats: "  << seats_ << std::endl;
+    o << "Number of ballots: "  << ballots_ << std::endl;
+    o << "Number of candidates: "  << static_cast<int>(candidates_.size()) << std::endl;
+    while(std::getline(f, line)){
+        o << line << std::endl;
+    }
+    
+
   return 0;
 }
 
 int OPL::CalculateWinners() {
+    std::ofstream o("temp.txt");
   std::cout << "CALCULATING" << std::endl;
   if (seats_ < 1 || num_candidates_ < seats_ || num_candidates_ < 0) {
     std::cout << "Invalid election parameters" << std::endl;
@@ -72,6 +83,7 @@ int OPL::CalculateWinners() {
 
       for (int i = 0; i < sizec; i++) {
         if (intermediate[i]->votes_ == max) {
+            o << "Candidate \"" << intermediate[i]->name_ << "\" from [" << intermediate[i]->party_ << "] win " << max << " ballots. " << std::endl;
           tied_candidates.push_back(intermediate[i]);
           tied_indices.push_back(indices[i]);
         }
