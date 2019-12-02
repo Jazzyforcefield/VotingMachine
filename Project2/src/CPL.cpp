@@ -95,14 +95,7 @@ int CPL::CalculateWinners() {
 		std::cout<< " gets seats: " << get_seats<<std::endl;
 		total_seats += get_seats;
 		std::cout << "remainder is "<<rem<<std::endl;
-		if (remainder_to_index_[rem].empty())
-		{
-			remainder_to_index_[rem] = {i};	
-		}
-		else
-		{
-			remainder_to_index_[rem].push_back(i);
-		}
+		remainder_to_index_[rem].push_back(i);
 		party->seats_won_ = get_seats;
 		
 		remainder_.insert(rem);
