@@ -68,7 +68,6 @@ int Processor::process() {
 
     vote_ = new CPL(seats, ballots, candidates);
 
-    int broken = 0;
     int j = 0;
     std::vector<std::string> partytokens;
     std::stringstream partystream(part);
@@ -80,24 +79,21 @@ int Processor::process() {
     for (int i = 0; i < party_count; i++) {
       Party * party = new Party();
       party->name_ = partytokens[i];
-      if (broken == 1) {
-        parse_CPL_line(party, line);
-        broken = 0;
-      }
-
-      while (j < candidates) {
-        std::getline(f, line);
-        o << "[" << line << "]" << std::endl;
-        int result = parse_CPL_line(party, line);
-        if (result == 0) {
-          j++;
-        } else {
-          broken = 1;
-          break;
-        }
-      }
+      party->votes_ = 0;
       vote_->get_parties()->push_back(party);
     }
+    while (j < candidates) {
+      std::getline(f, line);
+      o << "[" << line << "]" << std::endl;
+      int result = parse_CPL_line(line);
+      if (result == 0) {
+        j++;
+      } else {
+        break;
+      }
+    }
+      
+  
   } else {
     std::cout << "Unexpected voting type" << std::endl;
     return -1;
@@ -139,7 +135,7 @@ int Processor::parse_OPL_line(Candidate * candidate, std::string line) {
   return 0;
 }
 
-int Processor::parse_CPL_line(Party * party, std::string line) { // Sets party attributes
+int Processor::parse_CPL_line(std::string line) { // Sets party attributes
   std::vector<std::string> tokens;
   std::stringstream linestream(line);
 
@@ -153,8 +149,15 @@ int Processor::parse_CPL_line(Party * party, std::string line) { // Sets party a
     std::cout << "Invalid amount of tokens" << std::endl;
     return -1;
   }
-
-  party->members_.push_back(tokens[0]);
+  
+  std::vector<Party *> * parties = vote_->get_parties(); 
+  for (int i = 0; i< parties->size();i++)
+  {
+	Party * party = (*parties)[i];
+  	if (tokens[1].compare(party->name_ )== 0) {
+  		party->members_.push_back(tokens[0]);
+	}
+  }
   return 0;
 }
 
