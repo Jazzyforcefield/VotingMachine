@@ -27,4 +27,6 @@ clean:
 	rm -f *.o
 	rm -f $(EXEFILE)
 	rm -f audit.txt
+	rm -f temp.txt
+	rm -f result.txt
 	rm -f *.class
