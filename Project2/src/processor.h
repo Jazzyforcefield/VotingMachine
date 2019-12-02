@@ -16,7 +16,7 @@ class Processor {
   Processor(std::string fname = "");
   int process();
   int parse_OPL_line(Candidate * candidate, std::string line);
-  int parse_CPL_line(Party * party, std::string line);
+  int parse_CPL_line(std::string line);
   int get_one_index(std::string line);
   
  private:
