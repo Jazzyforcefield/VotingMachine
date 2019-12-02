@@ -83,7 +83,7 @@ int OPL::CalculateWinners() {
 
       for (int i = 0; i < sizec; i++) {
         if (intermediate[i]->votes_ == max) {
-            o << "Candidate \"" << intermediate[i]->name_ << "\" from [" << intermediate[i]->party_ << "] win " << max << " ballots. " << std::endl;
+            o << "Candidate \"" << intermediate[i]->name_ << "\" from [" << intermediate[i]->party_ << "] won " << max << " ballots. " << std::endl;
           tied_candidates.push_back(intermediate[i]);
           tied_indices.push_back(indices[i]);
         }
