@@ -29,7 +29,7 @@ int CPL::increment(int index) {
 int CPL::Display() {
   //create_txt_file();
   std::cout << "Displaying GUI" << std::endl;
-  int ret = system("java display.java");  // Major security flaw
+  int ret = system("java display");  // Major security flaw
   if (ret < 0) {
     return -1;
   } 

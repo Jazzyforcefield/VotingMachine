@@ -23,7 +23,7 @@ int OPL::increment(int index) {
 
 int OPL::Display() {
   std::cout << "Displaying GUI" << std::endl;
-  int ret = system("java display.java");
+  int ret = system("java display");
   if (ret < 0) {
     return -1;
   } 
