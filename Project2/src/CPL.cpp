@@ -31,36 +31,40 @@ int CPL::Display() {
 }
 
 int CPL::create_txt_file() {
-	
-	std::cout<< "--------------Creating txt file--------------"<<std::endl;
+	std::ofstream o("result.txt");
 	std::vector<Party*> parties = *CPL::get_parties();
 	int sizep = parties.size();
-	
-	std::cout << "CPL\n";
-	std::cout << "seat: "<< seats_ << "\n";
-	std::cout << "ballots: " << ballots_ << "\n";
-	std::cout << "Number of Candidates: " << num_candidates_ << "\n\n";
+    if (!o) {
+        std::cout << "Error occurred in opening result file" << std::endl;
+        return -1;
+    }
+    
+    o << "Type of election : CPL"  << std::endl;
+    o << "Number of seats: "  << seats_ << std::endl;
+    o << "Number of ballots: "  << ballots_ << std::endl;
+    o << "Number of candidates: "  << num_candidates_ << std::endl;
+    
 	for (int i = 0; i < sizep; i++)
 	{
 		Party* party = parties[i];
-		std::cout<< "For party ["<< party->name_ << "] :";
+		o << "Party ["<< party->name_ << "] :";
 		if (party->seats_won_!=0)
 		{
-			std::cout<< "It won " << party->seats_won_ << " seats\n";
+			o << "It won " << party->seats_won_ << " seats\n";
 			int seats_lol = party->seats_won_;
 			int index = 0;
-			std::cout << "Winners are: ";
+			o << "Winners are: ";
 			while (seats_lol!= 0)
 			{
-				std::cout << party->members_[index] << ", ";
+				o << party->members_[index] << ", ";
 				seats_lol--;
 				index++;
 			}
-			std::cout<<"\b\b\n";
+			o <<"\b\b\n";
 		}
 		else
 		{
-			std::cout<<"NO one won in this party"<<std::endl;
+			o <<"NO one won in this party"<<std::endl;
 		}
 		
 	}
