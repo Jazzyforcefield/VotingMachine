@@ -56,11 +56,18 @@ int CPL::create_txt_file() {
 			o << "Winners are: ";
 			while (seats_lol!= 0)
 			{
-				o << party->members_[index] << ", ";
+				o << party->members_[index];
 				seats_lol--;
+				if (seats_lol>0)
+				{
+					o<< ", ";
+				}
+				else if (seats_lol==0)
+				{
+					o<<"\n";
+				}
 				index++;
 			}
-			o <<"\b\b\n";
 		}
 		else
 		{
