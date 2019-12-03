@@ -177,15 +177,6 @@ int Processor::get_one_index(std::string line) {
   return -1;
 }
 
-int main() {
-  std::string file_name;
-  std::cout << "Enter file name: ";
-  std::cin >> file_name;
-
-  Processor * processor = new Processor(file_name);  
-  processor->process();
-}
-
 /*
 std::vector<std::string> parsing(std::ifstream& f)
 {
