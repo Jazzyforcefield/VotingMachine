@@ -79,13 +79,8 @@ public class VotingCsvFile {
 		frame.getContentPane().add(btnNewButton);
 		frame.getContentPane().add(path);
 		// a text area that print the text
-		JScrollPane sp = new JScrollPane();
-		sp.setSize(14, 263);
-		sp.setLocation(200, 112);
 		JTextArea show = new JTextArea();
 		frame.getContentPane().add(show);
-		
-		frame.getContentPane().add(sp,BorderLayout.CENTER);
 		show.setBounds(33, 44, 237, 404);
 		
 		JButton btnNewButton_1 = new JButton("Show Audit File");
