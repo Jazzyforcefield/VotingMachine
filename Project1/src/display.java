@@ -1,5 +1,3 @@
-package voting;
-
 import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.awt.EventQueue;

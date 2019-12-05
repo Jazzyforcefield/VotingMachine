@@ -19,7 +19,7 @@ int CPL::increment(int index) {
 	}
 
 	(*parties_[index]).votes_++;
-	printf("%d\n", (*parties_[index]).votes_);
+	std::cout<< "Party: "<< (*parties_[index]).name_<<" :"<< (*parties_[index]).votes_ <<std::endl;
 
 	return 0;
 
@@ -27,116 +27,138 @@ int CPL::increment(int index) {
 }
 
 int CPL::Display() {
-  //create_txt_file();
-  std::cout << "Displaying GUI" << std::endl;
-  int ret = system("java display.java");  // Major security flaw
-  if (ret < 0) {
-    return -1;
-  } 
 	return 0;
 }
 
 int CPL::create_txt_file() {
-	int winnerc = CPL::winner();
+	std::ofstream o("result.txt");
 	std::vector<Party*> parties = *CPL::get_parties();
 	int sizep = parties.size();
-	std::ofstream outfile;
-	std::string new_file_name = "textfile.txt";
-	outfile.open(new_file_name);
-	outfile << "CPL\n";
-	outfile << "seat: "<< seats_ << "\n";
-	outfile << "ballots: " << ballots_ << "\n";
-	outfile << "Number of Candidates: " << candidates_ << "\n";
+    if (!o) {
+        std::cout << "Error occurred in opening result file" << std::endl;
+        return -1;
+    }
+    
+    o << "Type of election : CPL"  << std::endl;
+    o << "Number of seats: "  << seats_ << std::endl;
+    o << "Number of ballots: "  << ballots_ << std::endl;
+    o << "Number of candidates: "  << num_candidates_ << std::endl;
+    
 	for (int i = 0; i < sizep; i++)
 	{
-		Party* party = parties_[i];
-		outfile << "For party \""<< party->name_ << "\":\n";
-		outfile << "It won " << party->seats_won_ << " seats\n";
-		int seats_lol = party->seats_won_;
-		outfile << "Winners are: ";
-		int index = 0;
-		if (party->seats_won_ != 0)
+		Party* party = parties[i];
+		o << "Party ["<< party->name_ << "] :";
+		if (party->seats_won_!=0)
 		{
-			outfile << party->members_[index] << ", ";
-			index++;
-			seats_lol--;
+			o << "It won " << party->seats_won_ << " seats\n";
+			int seats_lol = party->seats_won_;
+			int index = 0;
+			o << "Winners are: ";
+			while (seats_lol!= 0)
+			{
+				o << party->members_[index];
+				seats_lol--;
+				if (seats_lol>0)
+				{
+					o<< ", ";
+				}
+				else if (seats_lol==0)
+				{
+					o<<"\n";
+				}
+				index++;
+			}
+		}
+		else
+		{
+			o <<"NO one won in this party"<<std::endl;
 		}
 		
 	}
+
+	return 0;
 
 }
 
-int CPL::winner() {
-	std::vector<Party*> winner;
+double CPL::GenerateRandomNumber(unsigned int seed) {
+  // Setting the first seed to the current UNIX time, seed thereafter
+  std::srand(seed);
+  return std::rand() * std::rand() / 73042.93;
+}
+
+int CPL::CalculateWinners() {
+	std::cout<< "--------------Calculating--------------"<<std::endl;
 	std::vector<Party*> parties = *CPL::get_parties();
 	int threshold = std::ceil((double)ballots_ / (double)seats_);
-	int sizep = parties.size();
+	std::cout<< "Threshold is: "<<threshold<<std::endl; 
 	int total_seats = 0;
-	std::vector<int> remain;
-	std::vector<int> max;
-	int maximum = 0;
-	for (int i = 0; i < sizep; i++) {
+	for (int i = 0; i < parties.size(); i++) {
 		Party* party = parties[i];
+		std::cout<< "Party "<<party->name_ ;
+		std::cout<< " has "<< (party->members_).size()<<" members and";
 		int get_seats = floor((double)party->votes_ / (double)threshold);
-		total_seats += get_seats;
-		int rem = party->votes_ - get_seats * threshold;
-		party->seats_won_ = get_seats;
-		party->remainder_ = rem;
-		
-		if (max.empty() || rem == maximum) {
-			max.push_back(i);
-		} else if (rem> maximum) {
-			max.clear();
-			max.push_back(i);
-			maximum = rem;
+		int rem = party->votes_ - get_seats * threshold;;
+		if (get_seats>= (party->members_).size())
+		{
+			get_seats = (party->members_).size();
+			rem = 0;
 		}
-		remain.push_back(rem);
+		std::cout<< " gets seats: " << get_seats<<std::endl;
+		total_seats += get_seats;
+		std::cout << "remainder is "<<rem<<std::endl;
+		remainder_to_index_[rem].push_back(i);
+		party->seats_won_ = get_seats;
+		
+		remainder_.insert(rem);
+		
 	}
-
-
-	while (total_seats < seats_) {
-		if (max.size() <= seats_ - total_seats) {
-			for (int i = 0; i < max.size(); i++) {
-				parties[max[i]]->seats_won_++;
+	
+	//int round = 0;
+ 	while (total_seats < seats_) {
+		int seats_left = seats_ - total_seats;
+		std::cout<< "seats left: "<<seats_left<<std::endl;
+		auto max = remainder_.begin();
+		std::vector<int> pindex_has_max_remainder = remainder_to_index_[*max];
+		/*
+		round++;
+		if (round == 10)
+		{
+			break;
+		}
+		*/
+		if (pindex_has_max_remainder.size()<= seats_left) {
+			//std::cout<<"666"<<std::endl;
+			for (int i = 0; i < pindex_has_max_remainder.size(); i++) {
+				//std::cout<<"777"<<std::endl;
+				parties[pindex_has_max_remainder[i]]->seats_won_++;
+				std::cout<< parties[pindex_has_max_remainder[i]]->name_ << " get one seats"<<std::endl;
 				total_seats++;
-				parties[max[i]]->remainder_ = 0;
+				remainder_to_index_[0].push_back(pindex_has_max_remainder[i]);
+	
 			}
-			maximum = 0;
-			max.clear();
-
-			for (int j = 0; j < sizep; j++) {
-				Party* party = parties[j];
-				int rem = party->remainder_;
-				if (max.empty() || rem == maximum) {
-					max.push_back(j);
-				} else if (rem > maximum) {
-					max.clear();
-					max.push_back(j);
-					maximum = rem;
-				}
+			remainder_.erase(*max);
+		} 
+		else {
+			std::cout<<"Final round!!!!"<<std::endl;
+			int seed = std::time(NULL); 
+			std::vector<double> random;
+			std::map<double,int> randomnumber_to_index; 
+			for (int i = 0; i < pindex_has_max_remainder.size(); i++) {
+				double random_number = GenerateRandomNumber(seed);
+				random.push_back(random_number);
+				seed = std::floor(random_number);
+				randomnumber_to_index[random_number] = pindex_has_max_remainder[i];
+				
 			}
-		} else {
-			int seats_left = seats_ - total_seats;
-			std::vector<int> random;
-			for (int i = 0; i < max.size(); i++) {
-				int iSecret = rand() % 10 + 1;
-				random.push_back(iSecret);
-			}
-			while (seats_left > 0) {
-				int max_random = random[0];
-				int index = 0;
-				for (int i = 0; i < max.size(); i++) {
-					if (random[i] > max_random) {
-						max_random = random[i];
-						index = i;
-					}
-				}
-				parties[max[index]]->seats_won_++;
-				seats_left -= 1;
+			std::sort(random.begin(),random.end());
+			for (int j = 0; j< seats_left ; j++) {
+				parties[randomnumber_to_index[random[j]]]->seats_won_++;
+				std::cout<< parties[randomnumber_to_index[random[j]]]->name_ << " get one seats"<<std::endl;
+				total_seats++;
 			}
 			
 		}
 	}
-
+	std::cout<< "\n\n ----------------finished----------------\n\n";
 	return 0;
 }

@@ -1,0 +1,247 @@
+\hypertarget{class_o_p_l}{}\doxysection{O\+PL Class Reference}
+\label{class_o_p_l}\index{OPL@{OPL}}
+
+
+\mbox{\hyperlink{class_o_p_l}{O\+PL}} class.  
+
+
+
+
+{\ttfamily \#include $<$O\+P\+L.\+h$>$}
+
+Inheritance diagram for O\+PL\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_o_p_l}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_o_p_l_aaac01e271dd6c7cac8f41488d40d9831}{O\+PL}} (int seats, int ballots, int candidates)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_o_p_l}{O\+PL}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_o_p_l_ac2f8939690888f4d4186f2c5db1baa5b}{get\+\_\+candidates}} () override
+\begin{DoxyCompactList}\small\item\em Get a list of candidates of \mbox{\hyperlink{class_o_p_l}{O\+PL}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_o_p_l_ab663b0307ccb9189fe9102448aa33356}{increment}} (int index)
+\begin{DoxyCompactList}\small\item\em Increment the votes of candidates of index by one. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_o_p_l_acf8e5ee1cbf886bee3d58591b8d7935c}{Calculate\+Winners}} ()
+\begin{DoxyCompactList}\small\item\em Calculate Winners of voting. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_o_p_l_a0c4222413f8568b1f10037e1ebd0a1d9}{Get\+Max\+Votes}} (std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ \&intermediate)
+\begin{DoxyCompactList}\small\item\em Gets the value of the max number of votes a candidate has. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_o_p_l_a61b9815ddd849be66b2a7b4f6ca89083}{Generate\+Random\+Number}} (unsigned int seed=std\+::time(N\+U\+LL))
+\begin{DoxyCompactList}\small\item\em Generate random number with time seeds. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_o_p_l_aeafae7b64bc811bfd8bfcf7e0cb13694}{Break\+Tie}} (std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ \&tied\+\_\+candidates)
+\begin{DoxyCompactList}\small\item\em Break tie with generate random number function. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_o_p_l_a113e4d0ab574e32a41d2f8fb4f9edb8c}{create\+\_\+txt\+\_\+file}} ()
+\begin{DoxyCompactList}\small\item\em Create txt file of resutls brief. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_o_p_l_a110e06b4d5c71f11dc5843a2870572b0}\label{class_o_p_l_a110e06b4d5c71f11dc5843a2870572b0}} 
+int {\bfseries Display} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_o_p_l}{O\+PL}} class. 
+
+This class is \mbox{\hyperlink{class_o_p_l}{O\+PL}}. It is used for create a entity of \mbox{\hyperlink{class_o_p_l}{O\+PL}} class inherited from \mbox{\hyperlink{class_voting_type}{Voting\+Type}}. An entity of \mbox{\hyperlink{class_o_p_l}{O\+PL}} class can have attributes like candidates have methods like increment, get\+\_\+candidates, Get\+Max\+Votes, Calculate\+Winners Generate\+Random\+Number, Break\+Tie, create\+\_\+txt\+\_\+file.
+
+\begin{DoxyNote}{Note}
+Will be used in processor to create \mbox{\hyperlink{class_o_p_l}{O\+PL}} entity
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Team25
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Revision}
+1.\+0 
+\end{DoxyParagraph}
+
+
+\begin{DoxyDate}{Date}
+
+\end{DoxyDate}
+\begin{DoxyParagraph}{Date}
+2019/12/01 
+\end{DoxyParagraph}
+
+
+Contact\+: \href{mailto:csci5801-fall2019-team25@umn.edu}{\texttt{ csci5801-\/fall2019-\/team25@umn.\+edu}}
+
+\$structure id\+: \#5 \$ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_o_p_l_aaac01e271dd6c7cac8f41488d40d9831}\label{class_o_p_l_aaac01e271dd6c7cac8f41488d40d9831}} 
+\index{OPL@{OPL}!OPL@{OPL}}
+\index{OPL@{OPL}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{OPL()}{OPL()}}
+{\footnotesize\ttfamily O\+P\+L\+::\+O\+PL (\begin{DoxyParamCaption}\item[{int}]{seats,  }\item[{int}]{ballots,  }\item[{int}]{candidates }\end{DoxyParamCaption})}
+
+
+
+Constructor of \mbox{\hyperlink{class_o_p_l}{O\+PL}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seats} & An integer argument present seats\\
+\hline
+{\em ballots} & An integer argument present ballots\\
+\hline
+{\em candidates} & An integer argument present candidates\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an entity of \mbox{\hyperlink{class_o_p_l}{O\+PL}} class 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_o_p_l_aeafae7b64bc811bfd8bfcf7e0cb13694}\label{class_o_p_l_aeafae7b64bc811bfd8bfcf7e0cb13694}} 
+\index{OPL@{OPL}!BreakTie@{BreakTie}}
+\index{BreakTie@{BreakTie}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{BreakTie()}{BreakTie()}}
+{\footnotesize\ttfamily int O\+P\+L\+::\+Break\+Tie (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ \&}]{tied\+\_\+candidates }\end{DoxyParamCaption})}
+
+
+
+Break tie with generate random number function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tied\+\_\+candidates} & candidate vector\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index of the winner in party list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_p_l_acf8e5ee1cbf886bee3d58591b8d7935c}\label{class_o_p_l_acf8e5ee1cbf886bee3d58591b8d7935c}} 
+\index{OPL@{OPL}!CalculateWinners@{CalculateWinners}}
+\index{CalculateWinners@{CalculateWinners}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{CalculateWinners()}{CalculateWinners()}}
+{\footnotesize\ttfamily int O\+P\+L\+::\+Calculate\+Winners (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculate Winners of voting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_voting_type_a360f07938492cb30ce8a16e0397d240d}{Voting\+Type}}.
+
+\mbox{\Hypertarget{class_o_p_l_a113e4d0ab574e32a41d2f8fb4f9edb8c}\label{class_o_p_l_a113e4d0ab574e32a41d2f8fb4f9edb8c}} 
+\index{OPL@{OPL}!create\_txt\_file@{create\_txt\_file}}
+\index{create\_txt\_file@{create\_txt\_file}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{create\_txt\_file()}{create\_txt\_file()}}
+{\footnotesize\ttfamily int O\+P\+L\+::create\+\_\+txt\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create txt file of resutls brief. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_voting_type_abba7b82d77100847216c197fec979ea1}{Voting\+Type}}.
+
+\mbox{\Hypertarget{class_o_p_l_a61b9815ddd849be66b2a7b4f6ca89083}\label{class_o_p_l_a61b9815ddd849be66b2a7b4f6ca89083}} 
+\index{OPL@{OPL}!GenerateRandomNumber@{GenerateRandomNumber}}
+\index{GenerateRandomNumber@{GenerateRandomNumber}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{GenerateRandomNumber()}{GenerateRandomNumber()}}
+{\footnotesize\ttfamily double O\+P\+L\+::\+Generate\+Random\+Number (\begin{DoxyParamCaption}\item[{unsigned int}]{seed = {\ttfamily std\+:\+:time(NULL)} }\end{DoxyParamCaption})}
+
+
+
+Generate random number with time seeds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & an int time seed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a double random number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_p_l_ac2f8939690888f4d4186f2c5db1baa5b}\label{class_o_p_l_ac2f8939690888f4d4186f2c5db1baa5b}} 
+\index{OPL@{OPL}!get\_candidates@{get\_candidates}}
+\index{get\_candidates@{get\_candidates}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{get\_candidates()}{get\_candidates()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ $\ast$ O\+P\+L\+::get\+\_\+candidates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get a list of candidates of \mbox{\hyperlink{class_o_p_l}{O\+PL}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of candidates 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_voting_type_a08341cc9918beaf596140967ec93c472}{Voting\+Type}}.
+
+\mbox{\Hypertarget{class_o_p_l_a0c4222413f8568b1f10037e1ebd0a1d9}\label{class_o_p_l_a0c4222413f8568b1f10037e1ebd0a1d9}} 
+\index{OPL@{OPL}!GetMaxVotes@{GetMaxVotes}}
+\index{GetMaxVotes@{GetMaxVotes}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{GetMaxVotes()}{GetMaxVotes()}}
+{\footnotesize\ttfamily int O\+P\+L\+::\+Get\+Max\+Votes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ \&}]{intermediate }\end{DoxyParamCaption})}
+
+
+
+Gets the value of the max number of votes a candidate has. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intermediate} & A \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ vector\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_o_p_l_ab663b0307ccb9189fe9102448aa33356}\label{class_o_p_l_ab663b0307ccb9189fe9102448aa33356}} 
+\index{OPL@{OPL}!increment@{increment}}
+\index{increment@{increment}!OPL@{OPL}}
+\doxysubsubsection{\texorpdfstring{increment()}{increment()}}
+{\footnotesize\ttfamily int O\+P\+L\+::increment (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Increment the votes of candidates of index by one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer argument present index of candidate in vector\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_voting_type_ae6695e4b49d0f3bafec93e3d05a66ab7}{Voting\+Type}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+O\+P\+L.\+h\item 
+O\+P\+L.\+cpp\end{DoxyCompactItemize}

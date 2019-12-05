@@ -1,0 +1,207 @@
+\hypertarget{class_c_p_l}{}\doxysection{C\+PL Class Reference}
+\label{class_c_p_l}\index{CPL@{CPL}}
+
+
+\mbox{\hyperlink{class_c_p_l}{C\+PL}} class.  
+
+
+
+
+{\ttfamily \#include $<$C\+P\+L.\+h$>$}
+
+Inheritance diagram for C\+PL\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_p_l}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_p_l_ac3a3c8496a4960f043612bbb1b7ea131}{C\+PL}} (int seats, int ballots, int candidates)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_c_p_l}{C\+PL}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_party}{Party}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_c_p_l_a0298f4c054be76c63f9b220d27df6b15}{get\+\_\+parties}} ()
+\begin{DoxyCompactList}\small\item\em Get a list of parties of \mbox{\hyperlink{class_c_p_l}{C\+PL}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_c_p_l_a150979b2d92b1195a0c6e4585beda5ea}{increment}} (int index)
+\begin{DoxyCompactList}\small\item\em Increment the votes of candidates of index by one. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_c_p_l_a07aaefc4b7a690c39bac36eafba86cc6}{Calculate\+Winners}} ()
+\begin{DoxyCompactList}\small\item\em Calculate Winners of voting. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_c_p_l_a538f1d48f8d7805cb85a7be8f96802b9}{Generate\+Random\+Number}} (unsigned int seed=std\+::time(N\+U\+LL))
+\begin{DoxyCompactList}\small\item\em Generate random number with time seeds. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_c_p_l_aef00f3965d1cdf04759ca59fc2ba6029}{create\+\_\+txt\+\_\+file}} ()
+\begin{DoxyCompactList}\small\item\em Create txt file of resutls brief. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_c_p_l_a6c2e5571e1066ae5b894119bd039c01c}\label{class_c_p_l_a6c2e5571e1066ae5b894119bd039c01c}} 
+int {\bfseries Display} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_c_p_l}{C\+PL}} class. 
+
+This class is \mbox{\hyperlink{class_c_p_l}{C\+PL}}. It is used for create a entity of \mbox{\hyperlink{class_c_p_l}{C\+PL}} class inherited from \mbox{\hyperlink{class_voting_type}{Voting\+Type}}. An entity of \mbox{\hyperlink{class_c_p_l}{C\+PL}} class can have attributes like parties, remainder, remainder to index have methods like increment, get\+\_\+parties, Calculate\+Winners, Calculate\+Winners Generate\+Random\+Number, Break\+Tie, create\+\_\+txt\+\_\+file.
+
+\begin{DoxyNote}{Note}
+Will be used in processor to create \mbox{\hyperlink{class_c_p_l}{C\+PL}} entity
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Team25
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Revision}
+1.\+0 
+\end{DoxyParagraph}
+
+
+\begin{DoxyDate}{Date}
+
+\end{DoxyDate}
+\begin{DoxyParagraph}{Date}
+2019/12/01 
+\end{DoxyParagraph}
+
+
+Contact\+: \href{mailto:csci5801-fall2019-team25@umn.edu}{\texttt{ csci5801-\/fall2019-\/team25@umn.\+edu}}
+
+\$structure id\+: \#4 \$ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_p_l_ac3a3c8496a4960f043612bbb1b7ea131}\label{class_c_p_l_ac3a3c8496a4960f043612bbb1b7ea131}} 
+\index{CPL@{CPL}!CPL@{CPL}}
+\index{CPL@{CPL}!CPL@{CPL}}
+\doxysubsubsection{\texorpdfstring{CPL()}{CPL()}}
+{\footnotesize\ttfamily C\+P\+L\+::\+C\+PL (\begin{DoxyParamCaption}\item[{int}]{seats,  }\item[{int}]{ballots,  }\item[{int}]{candidates }\end{DoxyParamCaption})}
+
+
+
+Constructor of \mbox{\hyperlink{class_c_p_l}{C\+PL}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seats} & An integer argument present seats\\
+\hline
+{\em ballots} & An integer argument present ballots\\
+\hline
+{\em candidates} & An integer argument present candidates\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an entity of \mbox{\hyperlink{class_c_p_l}{C\+PL}} class 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_p_l_a07aaefc4b7a690c39bac36eafba86cc6}\label{class_c_p_l_a07aaefc4b7a690c39bac36eafba86cc6}} 
+\index{CPL@{CPL}!CalculateWinners@{CalculateWinners}}
+\index{CalculateWinners@{CalculateWinners}!CPL@{CPL}}
+\doxysubsubsection{\texorpdfstring{CalculateWinners()}{CalculateWinners()}}
+{\footnotesize\ttfamily int C\+P\+L\+::\+Calculate\+Winners (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculate Winners of voting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_voting_type_a360f07938492cb30ce8a16e0397d240d}{Voting\+Type}}.
+
+\mbox{\Hypertarget{class_c_p_l_aef00f3965d1cdf04759ca59fc2ba6029}\label{class_c_p_l_aef00f3965d1cdf04759ca59fc2ba6029}} 
+\index{CPL@{CPL}!create\_txt\_file@{create\_txt\_file}}
+\index{create\_txt\_file@{create\_txt\_file}!CPL@{CPL}}
+\doxysubsubsection{\texorpdfstring{create\_txt\_file()}{create\_txt\_file()}}
+{\footnotesize\ttfamily int C\+P\+L\+::create\+\_\+txt\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create txt file of resutls brief. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_voting_type_abba7b82d77100847216c197fec979ea1}{Voting\+Type}}.
+
+\mbox{\Hypertarget{class_c_p_l_a538f1d48f8d7805cb85a7be8f96802b9}\label{class_c_p_l_a538f1d48f8d7805cb85a7be8f96802b9}} 
+\index{CPL@{CPL}!GenerateRandomNumber@{GenerateRandomNumber}}
+\index{GenerateRandomNumber@{GenerateRandomNumber}!CPL@{CPL}}
+\doxysubsubsection{\texorpdfstring{GenerateRandomNumber()}{GenerateRandomNumber()}}
+{\footnotesize\ttfamily double C\+P\+L\+::\+Generate\+Random\+Number (\begin{DoxyParamCaption}\item[{unsigned int}]{seed = {\ttfamily std\+:\+:time(NULL)} }\end{DoxyParamCaption})}
+
+
+
+Generate random number with time seeds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & an int time seed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a double random number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_p_l_a0298f4c054be76c63f9b220d27df6b15}\label{class_c_p_l_a0298f4c054be76c63f9b220d27df6b15}} 
+\index{CPL@{CPL}!get\_parties@{get\_parties}}
+\index{get\_parties@{get\_parties}!CPL@{CPL}}
+\doxysubsubsection{\texorpdfstring{get\_parties()}{get\_parties()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_party}{Party}} $\ast$ $>$ $\ast$ C\+P\+L\+::get\+\_\+parties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a list of parties of \mbox{\hyperlink{class_c_p_l}{C\+PL}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of parties 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_voting_type_ae88a8f2e8d1f6a0780ac977ec74e2fab}{Voting\+Type}}.
+
+\mbox{\Hypertarget{class_c_p_l_a150979b2d92b1195a0c6e4585beda5ea}\label{class_c_p_l_a150979b2d92b1195a0c6e4585beda5ea}} 
+\index{CPL@{CPL}!increment@{increment}}
+\index{increment@{increment}!CPL@{CPL}}
+\doxysubsubsection{\texorpdfstring{increment()}{increment()}}
+{\footnotesize\ttfamily int C\+P\+L\+::increment (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Increment the votes of candidates of index by one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer argument present index of candidate in vector\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_voting_type_ae6695e4b49d0f3bafec93e3d05a66ab7}{Voting\+Type}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+P\+L.\+h\item 
+C\+P\+L.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,311 @@
+\hypertarget{class_voting_type}{}\doxysection{Voting\+Type Class Reference}
+\label{class_voting_type}\index{VotingType@{VotingType}}
+
+
+\mbox{\hyperlink{class_voting_type}{Voting\+Type}} class.  
+
+
+
+
+{\ttfamily \#include $<$Voting\+Type.\+h$>$}
+
+Inheritance diagram for Voting\+Type\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_voting_type}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_voting_type_ad6a355e80e7e83bda0488c19dcc00931}{Voting\+Type}} (int seats, int ballots, int candidates)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_voting_type}{Voting\+Type}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_voting_type_a9dc581aa6128920e91192f997b6389ae}{$\sim$\+Voting\+Type}} ()
+\begin{DoxyCompactList}\small\item\em destructor of \mbox{\hyperlink{class_voting_type}{Voting\+Type}} \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_voting_type_ae6695e4b49d0f3bafec93e3d05a66ab7}{increment}} (int index)=0
+\begin{DoxyCompactList}\small\item\em Increment the votes of candidates of index by one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_voting_type_ae7dfba2e0a019e4fc28a73f305bde1b1}\label{class_voting_type_ae7dfba2e0a019e4fc28a73f305bde1b1}} 
+virtual int {\bfseries Display} ()=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_party}{Party}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_voting_type_ae88a8f2e8d1f6a0780ac977ec74e2fab}{get\+\_\+parties}} ()
+\begin{DoxyCompactList}\small\item\em Get a list of parties. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_candidate}{Candidate}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_voting_type_a08341cc9918beaf596140967ec93c472}{get\+\_\+candidates}} ()
+\begin{DoxyCompactList}\small\item\em Get a list of candidates. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_voting_type_a360f07938492cb30ce8a16e0397d240d}{Calculate\+Winners}} ()=0
+\begin{DoxyCompactList}\small\item\em Calculate Winners of voting. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_voting_type_abba7b82d77100847216c197fec979ea1}{create\+\_\+txt\+\_\+file}} ()=0
+\begin{DoxyCompactList}\small\item\em Create txt file of resutls brief. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_voting_type_aa86fb1e5ab15619a3506a83858d6f8c2}{get\+\_\+seats}} ()
+\begin{DoxyCompactList}\small\item\em Get seats. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_voting_type_a0de1fe00084d4a06084482402c8e0849}{get\+\_\+ballots}} ()
+\begin{DoxyCompactList}\small\item\em Get ballots. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_voting_type_a09e337df27316c5991f36babf371df37}{get\+\_\+candidates\+\_\+num}} ()
+\begin{DoxyCompactList}\small\item\em Get number of candidates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_voting_type_a962dfc6667947cc1650f111fefa5e374}{seats\+\_\+}}
+\item 
+int \mbox{\hyperlink{class_voting_type_a94f51513f23fb6ee6601f66e82d97a80}{ballots\+\_\+}}
+\item 
+int \mbox{\hyperlink{class_voting_type_abe3075cfa5d71a1a3a34f02aab60f23f}{num\+\_\+candidates\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_voting_type}{Voting\+Type}} class. 
+
+This class is \mbox{\hyperlink{class_voting_type}{Voting\+Type}}. It is used for create a entity of \mbox{\hyperlink{class_voting_type}{Voting\+Type}} class An entity of \mbox{\hyperlink{class_voting_type}{Voting\+Type}} class can have attributes like seats, ballots, num\+\_\+candidates, have methods like increment, get\+\_\+candidates, get\+\_\+parties, Calculate\+Winners Generate\+Random\+Number, Break\+Tie, create\+\_\+txt\+\_\+file.
+
+\begin{DoxyNote}{Note}
+Will be used to inherit for \mbox{\hyperlink{class_o_p_l}{O\+PL}} and \mbox{\hyperlink{class_c_p_l}{C\+PL}}
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Team25
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Revision}
+1.\+0 
+\end{DoxyParagraph}
+
+
+\begin{DoxyDate}{Date}
+
+\end{DoxyDate}
+\begin{DoxyParagraph}{Date}
+2019/12/01 
+\end{DoxyParagraph}
+
+
+Contact\+: \href{mailto:csci5801-fall2019-team25@umn.edu}{\texttt{ csci5801-\/fall2019-\/team25@umn.\+edu}}
+
+\$structure id\+: \#5 \$ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_voting_type_ad6a355e80e7e83bda0488c19dcc00931}\label{class_voting_type_ad6a355e80e7e83bda0488c19dcc00931}} 
+\index{VotingType@{VotingType}!VotingType@{VotingType}}
+\index{VotingType@{VotingType}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{VotingType()}{VotingType()}}
+{\footnotesize\ttfamily Voting\+Type\+::\+Voting\+Type (\begin{DoxyParamCaption}\item[{int}]{seats,  }\item[{int}]{ballots,  }\item[{int}]{candidates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{class_voting_type}{Voting\+Type}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seats} & An integer argument present seats\\
+\hline
+{\em ballots} & An integer argument present ballots\\
+\hline
+{\em candidates} & An integer argument present candidates\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an entity of \mbox{\hyperlink{class_voting_type}{Voting\+Type}} class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_voting_type_a9dc581aa6128920e91192f997b6389ae}\label{class_voting_type_a9dc581aa6128920e91192f997b6389ae}} 
+\index{VotingType@{VotingType}!````~VotingType@{$\sim$VotingType}}
+\index{````~VotingType@{$\sim$VotingType}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{$\sim$VotingType()}{~VotingType()}}
+{\footnotesize\ttfamily virtual Voting\+Type\+::$\sim$\+Voting\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+destructor of \mbox{\hyperlink{class_voting_type}{Voting\+Type}} 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_voting_type_a360f07938492cb30ce8a16e0397d240d}\label{class_voting_type_a360f07938492cb30ce8a16e0397d240d}} 
+\index{VotingType@{VotingType}!CalculateWinners@{CalculateWinners}}
+\index{CalculateWinners@{CalculateWinners}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{CalculateWinners()}{CalculateWinners()}}
+{\footnotesize\ttfamily virtual int Voting\+Type\+::\+Calculate\+Winners (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculate Winners of voting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_c_p_l_a07aaefc4b7a690c39bac36eafba86cc6}{C\+PL}}, and \mbox{\hyperlink{class_o_p_l_acf8e5ee1cbf886bee3d58591b8d7935c}{O\+PL}}.
+
+\mbox{\Hypertarget{class_voting_type_abba7b82d77100847216c197fec979ea1}\label{class_voting_type_abba7b82d77100847216c197fec979ea1}} 
+\index{VotingType@{VotingType}!create\_txt\_file@{create\_txt\_file}}
+\index{create\_txt\_file@{create\_txt\_file}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{create\_txt\_file()}{create\_txt\_file()}}
+{\footnotesize\ttfamily virtual int Voting\+Type\+::create\+\_\+txt\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create txt file of resutls brief. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_o_p_l_a113e4d0ab574e32a41d2f8fb4f9edb8c}{O\+PL}}, and \mbox{\hyperlink{class_c_p_l_aef00f3965d1cdf04759ca59fc2ba6029}{C\+PL}}.
+
+\mbox{\Hypertarget{class_voting_type_a0de1fe00084d4a06084482402c8e0849}\label{class_voting_type_a0de1fe00084d4a06084482402c8e0849}} 
+\index{VotingType@{VotingType}!get\_ballots@{get\_ballots}}
+\index{get\_ballots@{get\_ballots}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{get\_ballots()}{get\_ballots()}}
+{\footnotesize\ttfamily int Voting\+Type\+::get\+\_\+ballots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get ballots. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ballots an integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_voting_type_a08341cc9918beaf596140967ec93c472}\label{class_voting_type_a08341cc9918beaf596140967ec93c472}} 
+\index{VotingType@{VotingType}!get\_candidates@{get\_candidates}}
+\index{get\_candidates@{get\_candidates}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{get\_candidates()}{get\_candidates()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{class_candidate}{Candidate}} $\ast$$>$$\ast$ Voting\+Type\+::get\+\_\+candidates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get a list of candidates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of candidates 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_o_p_l_ac2f8939690888f4d4186f2c5db1baa5b}{O\+PL}}.
+
+\mbox{\Hypertarget{class_voting_type_a09e337df27316c5991f36babf371df37}\label{class_voting_type_a09e337df27316c5991f36babf371df37}} 
+\index{VotingType@{VotingType}!get\_candidates\_num@{get\_candidates\_num}}
+\index{get\_candidates\_num@{get\_candidates\_num}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{get\_candidates\_num()}{get\_candidates\_num()}}
+{\footnotesize\ttfamily int Voting\+Type\+::get\+\_\+candidates\+\_\+num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get number of candidates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of candidates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_voting_type_ae88a8f2e8d1f6a0780ac977ec74e2fab}\label{class_voting_type_ae88a8f2e8d1f6a0780ac977ec74e2fab}} 
+\index{VotingType@{VotingType}!get\_parties@{get\_parties}}
+\index{get\_parties@{get\_parties}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{get\_parties()}{get\_parties()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{class_party}{Party}} $\ast$$>$$\ast$ Voting\+Type\+::get\+\_\+parties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get a list of parties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of parties 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_c_p_l_a0298f4c054be76c63f9b220d27df6b15}{C\+PL}}.
+
+\mbox{\Hypertarget{class_voting_type_aa86fb1e5ab15619a3506a83858d6f8c2}\label{class_voting_type_aa86fb1e5ab15619a3506a83858d6f8c2}} 
+\index{VotingType@{VotingType}!get\_seats@{get\_seats}}
+\index{get\_seats@{get\_seats}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{get\_seats()}{get\_seats()}}
+{\footnotesize\ttfamily int Voting\+Type\+::get\+\_\+seats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get seats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N\+U\+LL} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+seat an integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_voting_type_ae6695e4b49d0f3bafec93e3d05a66ab7}\label{class_voting_type_ae6695e4b49d0f3bafec93e3d05a66ab7}} 
+\index{VotingType@{VotingType}!increment@{increment}}
+\index{increment@{increment}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{increment()}{increment()}}
+{\footnotesize\ttfamily virtual int Voting\+Type\+::increment (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Increment the votes of candidates of index by one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer argument present index of candidate in vector\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 represent success, -\/1 represent failure. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_c_p_l_a150979b2d92b1195a0c6e4585beda5ea}{C\+PL}}, and \mbox{\hyperlink{class_o_p_l_ab663b0307ccb9189fe9102448aa33356}{O\+PL}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_voting_type_a94f51513f23fb6ee6601f66e82d97a80}\label{class_voting_type_a94f51513f23fb6ee6601f66e82d97a80}} 
+\index{VotingType@{VotingType}!ballots\_@{ballots\_}}
+\index{ballots\_@{ballots\_}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{ballots\_}{ballots\_}}
+{\footnotesize\ttfamily int Voting\+Type\+::ballots\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+A protected variable. int ballots \mbox{\Hypertarget{class_voting_type_abe3075cfa5d71a1a3a34f02aab60f23f}\label{class_voting_type_abe3075cfa5d71a1a3a34f02aab60f23f}} 
+\index{VotingType@{VotingType}!num\_candidates\_@{num\_candidates\_}}
+\index{num\_candidates\_@{num\_candidates\_}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{num\_candidates\_}{num\_candidates\_}}
+{\footnotesize\ttfamily int Voting\+Type\+::num\+\_\+candidates\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+A protected variable. int number of candidates \mbox{\Hypertarget{class_voting_type_a962dfc6667947cc1650f111fefa5e374}\label{class_voting_type_a962dfc6667947cc1650f111fefa5e374}} 
+\index{VotingType@{VotingType}!seats\_@{seats\_}}
+\index{seats\_@{seats\_}!VotingType@{VotingType}}
+\doxysubsubsection{\texorpdfstring{seats\_}{seats\_}}
+{\footnotesize\ttfamily int Voting\+Type\+::seats\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+A protected variable. int seat 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Voting\+Type.\+h\end{DoxyCompactItemize}
