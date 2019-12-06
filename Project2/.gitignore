@@ -3,3 +3,5 @@ voting_system
 *.class
 temp.txt
 result.txt
+documentation/html
+documentation/latex

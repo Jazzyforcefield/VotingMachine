@@ -30,3 +30,5 @@ clean:
 	rm -f temp.txt
 	rm -f result.txt
 	rm -f *.class
+	rm -rf ../documentation/html
+	rm -rf ../documentation/latex
