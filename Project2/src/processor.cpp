@@ -43,7 +43,7 @@ int Processor::process() {
     for (int i = 0; i < candidates; i++) {
       Candidate * cand = new Candidate();
       std::getline(f, line);
-      o << line << std::endl;
+      o << "[" << line << "]" << std::endl;
       parse_OPL_line(cand, line);
       vote_->get_candidates()->push_back(cand);
     }
