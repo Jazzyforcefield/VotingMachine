@@ -27,7 +27,7 @@ int CPL::increment(int index) {
 }
 
 int CPL::Display() {
-  system("java display");
+  system("java Display");
   return 0;
 }
 

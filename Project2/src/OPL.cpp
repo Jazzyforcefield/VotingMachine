@@ -22,7 +22,7 @@ int OPL::increment(int index) {
 }
 
 int OPL::Display() {
-  system("java VotingCsvFile");
+  system("java Display");
   return 0;
 }
 

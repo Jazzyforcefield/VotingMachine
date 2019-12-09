@@ -5,8 +5,9 @@
 int main() {
   system("java VotingCsvFile");
   std::string file_name;
-  std::cout << "Enter file name: ";
-  std::cin >> file_name;
+  std::ifstream path("path.txt", std::ifstream::in);
+  path >> file_name;
+  path.close();
 
   Processor * processor = new Processor(file_name);  
   processor->process();
