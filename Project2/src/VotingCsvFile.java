@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -6,126 +5,134 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Choice;
-import java.awt.Button;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-import java.awt.TextField;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.awt.event.ActionEvent;
-import java.awt.TextField;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 import java.awt.Color;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
+/**
+ * Show the interface that users could select the CSV file from any dictionary
+ * and we can run the algorithm. 
+ * @author      YongFeng Ji
+ * @version     2.0         
+ * @since       12/08/2019
+ */
 
-public class VotingCsvFile {
-	JFrame frame = new JFrame("My JFrame Title");
-	private final JButton btnNewButton = new JButton("Find CSV File");
+public class VotingCsvFile extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField path;
+	private JTextField panduan;
+	private JButton run;
+
+	/**
+	   * This is the main method which call the frame(Interface)
+	   * @param args Unused.
+	   * @return Nothing.
+	   */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VotingCsvFile window = new VotingCsvFile();
-					window.frame.setVisible(true);
+					VotingCsvFile frame = new VotingCsvFile();
+					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setTitle("Interface for searching file");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
+
+	/**
+	   * This is the interface function
+	   * @param none.
+	   * @return Nothing.
+	   */
 	public VotingCsvFile() {
-		initialize();
-	}
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.ORANGE);
-		frame.setBackground(Color.ORANGE);
-		frame.setResizable(false);
-		frame.setTitle("Welcome to Voting system");
-		frame.setBounds(300, 0, 600, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		TextField path = new TextField();
-		path.setBackground(Color.WHITE);
-		path.setBounds(358, 44, 186, 35);
-		// This Button named find CSV file, it will find the file
-		// and show the whole path.
-		btnNewButton.addActionListener(new ActionListener() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.ORANGE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		path = new JTextField();
+		path.setBounds(79, 38, 290, 37);
+		contentPane.add(path);
+		path.setColumns(10);
+		path.setEditable(false);
+		
+		
+		JButton FileOpen = new JButton("SelectPath");
+		FileOpen.addActionListener(new ActionListener() {
+			/**
+			   * This is the search file function button
+			   * @param none.
+			   * @return Nothing.
+			   */
 			public void actionPerformed(ActionEvent e) {
+				// use the Filechooser in order to be able to select file
 				JFileChooser chooser = new JFileChooser();
 				chooser.showOpenDialog(null);
 				File f = chooser.getSelectedFile();
 				String filename = f.getAbsolutePath();
+				// set the textfield(path) to the file's path we just chose
 				path.setText(filename);
-			}
-		});
-		btnNewButton.setBounds(376, 85, 154, 92);
-		frame.getContentPane().add(btnNewButton);
-		frame.getContentPane().add(path);
-		// a text area that print the text
-		JTextArea show = new JTextArea();
-		frame.getContentPane().add(show);
-		show.setBounds(33, 44, 237, 404);
-		
-		JButton btnNewButton_1 = new JButton("Show Audit File");
-		// This button is print the audit file text to the text area
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BufferedReader audit = null;
+				// create location and name
+				File f1 = new File("path.txt");
+				// write file to the location.
 				try {
-					audit = new BufferedReader(new FileReader("audit.txt"));
-					String line = "";
-					String s = "";
-					while ((line = audit.readLine())!= null) {
-						s = s+line+"\n";	
-					}
-					show.setText(s);	
-				}
-				catch(IOException e2) {
-					JOptionPane.showMessageDialog(null, "Could you just have your audit file first?");
-				}	
-			}
-		});
-		btnNewButton_1.setBounds(376, 225, 154, 92);
-		frame.getContentPane().add(btnNewButton_1);
-		JButton savefile = new JButton("save the audit file");
-		savefile.setForeground(Color.BLACK);
-		savefile.setBackground(Color.YELLOW);
-		// This button is to save the text that is being displayed in the textarea.
-		savefile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser saveaudit = new JFileChooser() ;
-				saveaudit.showSaveDialog(null);
-				File f2 = saveaudit.getSelectedFile();
-				try {
-					
-					FileWriter fw = new FileWriter(f2);
-					String text = show.getText();
+					FileWriter fw = new FileWriter(f1);
+					String text = path.getText();
 					fw.write(text);
 					fw.close();
+					// make the textfield to "File Choosen"
+					panduan.setText("File Choosen");
 				}
 				catch(IOException e2) {
 					JOptionPane.showMessageDialog(null, "Boom");
-				}		
+				}
 			}
 		});
-		savefile.setBounds(376, 356, 154, 92);
-		frame.getContentPane().add(savefile);
+		FileOpen.setBounds(156, 112, 141, 29);
+		contentPane.add(FileOpen);
+		
+		panduan = new JTextField();
+		panduan.setHorizontalAlignment(SwingConstants.CENTER);
+		panduan.setText("No File Choosen");
+		panduan.setBounds(156, 165, 141, 26);
+		contentPane.add(panduan);
+		panduan.setColumns(10);
+		
+		run = new JButton("Run the System");
+		run.addActionListener(new ActionListener() {
+			/**
+			   * This is the run function button
+			   * @param none.
+			   * @return Nothing.
+			   */
+			public void actionPerformed(ActionEvent e) {
+				// This is the run button, if we click and select yes, 
+				// the system is going to run the result
+				int answer;
+				answer = JOptionPane.showConfirmDialog
+						(null,"If you click yes, you are about to close the interface");
+				if(answer == JOptionPane.YES_OPTION) {
+					// if yes, interface close
+					System.exit(0);
+				}
+			}
+		});
+		run.setBounds(156, 221, 141, 29);
+		contentPane.add(run);
 	}
 }
