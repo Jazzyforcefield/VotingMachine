@@ -111,8 +111,8 @@ int Processor::process() {
     vote_->increment(index);
   }
   vote_->CalculateWinners();
-  vote_->Display();
   vote_->create_txt_file();
+  vote_->Display();
 }
 
 int Processor::parse_OPL_line(Candidate * candidate, std::string line) {
