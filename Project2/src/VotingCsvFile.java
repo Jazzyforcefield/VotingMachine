@@ -34,7 +34,6 @@ public class VotingCsvFile extends JFrame {
 	/**
 	   * This is the main method which call the frame(Interface)
 	   * @param args Unused.
-	   * @return Nothing.
 	   */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,8 +52,6 @@ public class VotingCsvFile extends JFrame {
 
 	/**
 	   * This is the interface function
-	   * @param none.
-	   * @return Nothing.
 	   */
 	public VotingCsvFile() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,13 +120,21 @@ public class VotingCsvFile extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// This is the run button, if we click and select yes, 
 				// the system is going to run the result
-				int answer;
-				answer = JOptionPane.showConfirmDialog
-						(null,"If you click yes, you are about to close the interface");
-				if(answer == JOptionPane.YES_OPTION) {
-					// if yes, interface close
-					System.exit(0);
+				if(path.getText().isEmpty()) {
+					// if the path is not chosen, error happen
+					JOptionPane.showMessageDialog(null, "Choose a file first");
 				}
+				
+				else {
+					// if not, run the algorithm
+					int answer;
+					answer = JOptionPane.showConfirmDialog
+							(null,"If you click yes, you are about to close the interface");
+					if(answer == JOptionPane.YES_OPTION) {
+						// if yes, interface close
+						System.exit(0);
+				}
+			}
 			}
 		});
 		run.setBounds(156, 221, 141, 29);
