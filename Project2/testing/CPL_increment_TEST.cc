@@ -16,7 +16,7 @@ class CPLTests : public ::testing::Test {
 		
 		cpl_test_case1_ = new CPL(5, 60, 21);
 		int n_parties = 6;
-		std::vector<Party*>* parties = cpl_test_case1_->get_parties();
+		std::vector<Party*> * parties = cpl_test_case1_->get_parties();
 		char party_name = 'A';
 		for (int i = 0; i < n_parties ; i++)
 		{
@@ -123,7 +123,7 @@ TEST_F(CPLTests, CPLIncrementTest) {
 	for (int each_ballot = 0; each_ballot < 10; each_ballot++)
 	{ 
 		int party_number = 0;
-    int parties_size = parties->size();
+    		int parties_size = parties->size();
 
 		for (int each_increment = 0; each_increment < parties_size; each_increment++)
 		{ 
@@ -148,44 +148,33 @@ TEST_F(CPLTests, CPLIncrementTest) {
 
 	EXPECT_EQ(cpl_test_case1_->increment(6), -1) << "There should not exist the seventh party.";
 	EXPECT_EQ(cpl_test_case1_->increment(-1), -1) << "increment() index should not be negative number";
-	EXPECT_EQ(cpl_test_case2_->increment(2.37), -1) << "increment() index should not be a double or float";
 
+	std::vector<Party *> * parties2 = cpl_test_case2_->get_parties();
+	cpl_test_case2_->increment(2);
+	EXPECT_EQ((*parties2)[2]->votes_, 1);
+	EXPECT_EQ((*parties2)[0]->votes_, 0);
+	EXPECT_EQ((*parties2)[1]->votes_, 0);
 
 	cpl_test_case2_->increment(2);
-	EXPECT_EQ((*parties)[2]->votes_, 1);
-	EXPECT_EQ((*parties)[0]->votes_, 0);
-	EXPECT_EQ((*parties)[1]->votes_, 0);
-
-	cpl_test_case2_->increment(2);
-	EXPECT_EQ((*parties)[2]->votes_, 2);
-	EXPECT_EQ((*parties)[4]->votes_, 0);
+	EXPECT_EQ((*parties2)[2]->votes_, 2);
+	EXPECT_EQ((*parties2)[4]->votes_, 0);
 
 	cpl_test_case2_->increment(4);
-	EXPECT_EQ((*parties)[2]->votes_, 2);
-	EXPECT_EQ((*parties)[1]->votes_, 0);
-	EXPECT_EQ((*parties)[4]->votes_, 1);
-	EXPECT_EQ((*parties)[0]->votes_, 0);
+	EXPECT_EQ((*parties2)[2]->votes_, 2);
+	EXPECT_EQ((*parties2)[1]->votes_, 0);
+	EXPECT_EQ((*parties2)[4]->votes_, 1);
+	EXPECT_EQ((*parties2)[0]->votes_, 0);
 
 	EXPECT_EQ(cpl_test_case2_->increment(10), -1) << "There should not exist the seventh party.";
 	EXPECT_EQ(cpl_test_case2_->increment(-5), -1) << "increment() index should not be negative number";
-	EXPECT_EQ(cpl_test_case2_->increment(6.07), -1) << "increment() index should not be a double or float";
 	
 }
 
 
 // Tests that CPL::get_party() method.
 TEST_F(CPLTests, CPL_Get_Party_Test) {
-	std::vector<Party*>* parties1 = cpl_test_case1_->get_parties();
-  	char namechar = 'A';
-	std::string party_name(1,namechar);
-  	int parties1_size = parties1->size();
-	for (int each_party; each_party < parties1_size; each_party++)
-	{
-		namechar++;
-		std::string s(1,namechar);
-		EXPECT_EQ((*parties1)[each_party]->name_, s);
-	}
-	EXPECT_EQ((*parties1).size(), 6) << " the size of the parties should be 6";
+	std::vector<Party*> parties1 = *(cpl_test_case1_->get_parties());
+	EXPECT_EQ(parties1.size(), 6) << " the size of the parties should be 6";
 
 	
 
@@ -193,7 +182,11 @@ TEST_F(CPLTests, CPL_Get_Party_Test) {
 
 	EXPECT_EQ((*parties2)[4]->name_, "L");
 	EXPECT_EQ((*parties2)[3]->name_, "T");
+	
 
-	EXPECT_EQ((*parties1)[3]->members_[5], "Raymond");
-	EXPECT_EQ((*parties1)[4]->members_[2], "Erik");
+	EXPECT_EQ((*parties2)[4]->members_[2], "Erik");
+	EXPECT_EQ((*parties2)[3]->members_[3], "Tyler");
+
+	EXPECT_EQ(parties1[3]->members_[1], "b");
+	EXPECT_EQ(parties1[4]->members_[3], "d");
 }
