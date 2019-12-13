@@ -111,8 +111,8 @@ int OPL::CalculateWinners() {
 
 int OPL::BreakTie(std::vector<Candidate *>& tied_candidates) {  // Returns index of winner
   int numc, seed, rmax, maxi;
-  double random_numbers[numc];
   numc = tied_candidates.size();
+  double random_numbers[numc];
   seed = std::time(NULL);   // Technically insecure from security standpoint
   maxi = 0;
 
