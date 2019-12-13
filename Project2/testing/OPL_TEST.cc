@@ -65,7 +65,7 @@ TEST_F(OPLTests, OPL_Increment_Test) {
 }
 
 // Testing the OPL get_candidates function
-TEST_F(OPLTests, OPLCandidateTest) {
+TEST_F(OPLTests, OPL_Candidate_Test) {
   std::vector<Candidate *> * cands = opl_test_case_->get_candidates();
   EXPECT_EQ((*cands)[1]->name_ ,"Foster");
   EXPECT_EQ((*cands)[6]->name_ ,"Erik");
