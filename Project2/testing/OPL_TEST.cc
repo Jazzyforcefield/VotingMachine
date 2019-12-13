@@ -149,6 +149,27 @@ TEST_F(OPLTests, OPL_GetMaxVotes_Test) {
   EXPECT_EQ(actual3, expected3) << "Function does not handle large numbers well" << std::endl;
 }
 
+TEST_F(OPLTests, OPL_BreakTie_Test) {
+  OPL * function_only = new OPL(9, 9, 9);
+  int expectedx = -1;
+  int expected0 = 0;
+
+  std::vector<Candidate *> cvec;
+  Candidate * cand1 = new Candidate();
+  cand1->name_ = "Bob";
+  cand1->party_ = "D";
+
+  int actualx = function_only->BreakTie(cvec);
+
+  cvec.push_back(cand1);
+
+  int actual0 = function_only->BreakTie(cvec);
+
+
+  EXPECT_EQ(actualx, expectedx) << "Function not catching empty vector" << std::endl;
+  EXPECT_EQ(actual0, expected0) << "Function not returning correct number when only 1 candidate" << std::endl;
+}
+
 
 
 
