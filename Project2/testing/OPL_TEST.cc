@@ -76,3 +76,23 @@ TEST_F(OPLTests, OPL_Candidate_Test) {
   EXPECT_EQ((*cands)[9]->party_,"F");
 
 }
+
+// Testing the OPL GenerateRandomNumber function
+TEST_F(OPLTests, OPL_GenerateRandomNumber_Test) {
+	double ans1 = opl_test_case_->GenerateRandomNumber(0);
+	double ans2 = opl_test_case_->GenerateRandomNumber(10);
+	double ans3 = opl_test_case_->GenerateRandomNumber(100);
+	double ans4 = opl_test_case_->GenerateRandomNumber(2000);
+	double ans5 = opl_test_case_->GenerateRandomNumber(500000);
+	EXPECT_EQ(int(ans1),-18675);
+	EXPECT_EQ(int(ans2),6019);
+	EXPECT_EQ(int(ans3),1555);
+	EXPECT_EQ(int(ans4),7515);
+	EXPECT_EQ(int(ans5),-27394);
+
+}
+
+
+
+
+
