@@ -115,7 +115,7 @@ class CPLTests : public ::testing::Test {
 };
 
 // Tests that CPL::increament() method.
-TEST_F(CPLTests, CPLIncrementTest) {
+TEST_F(CPLTests, CPL_Increment_Test) {
 	std::vector<Party *> * parties = cpl_test_case1_->get_parties();
 	//EXPECT_EQ(*parties[1].name_, "G");
 	//EXPECT_EQ(*parties[2].name_, "G");
