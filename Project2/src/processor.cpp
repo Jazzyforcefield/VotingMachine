@@ -100,9 +100,7 @@ int Processor::process() {
   }
 
   // Start processing the votes
-  int seats = vote_->get_seats();
   int ballots = vote_->get_ballots();
-  int candidates = vote_->get_candidates_num();
 
   for (int i = 0; i < ballots; i++) {
     std::getline(f, line);
@@ -152,7 +150,7 @@ int Processor::parse_CPL_line(std::string line) { // Sets party attributes
   }
   
   std::vector<Party *> * parties = vote_->get_parties(); 
-  for (int i = 0; i< parties->size();i++)
+  for (int i = 0; i< static_cast<int>(parties->size());i++)
   {
 	Party * party = (*parties)[i];
   	if (tokens[1].compare(party->name_ )== 0) {
