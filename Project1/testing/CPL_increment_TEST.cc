@@ -176,14 +176,14 @@ TEST_F(CPLTests, CPLIncrementTest) {
 // Tests that CPL::get_party() method.
 TEST_F(CPLTests, CPL_Get_Party_Test) {
 	std::vector<Party*>* parties1 = cpl_test_case1_->get_parties();
-  char namechar = 'A';
-	std::string party_name = std::string(namechar);
-  int parties1_size = parties1->size();
+  	char namechar = 'A';
+	std::string party_name(1,namechar);
+  	int parties1_size = parties1->size();
 	for (int each_party; each_party < parties1_size; each_party++)
 	{
-		std::string s(namechar++);
+		namechar++;
+		std::string s(1,namechar);
 		EXPECT_EQ((*parties1)[each_party]->name_, s);
-		party_name++;
 	}
 	EXPECT_EQ((*parties1).size(), 6) << " the size of the parties should be 6";
 
