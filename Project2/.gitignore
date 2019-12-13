@@ -1,6 +1,8 @@
 audit.txt
 voting_system
+vote_unittest
 *.class
+path.txt
 temp.txt
 result.txt
 documentation/html
