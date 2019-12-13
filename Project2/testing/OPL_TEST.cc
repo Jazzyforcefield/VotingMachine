@@ -167,7 +167,6 @@ TEST_F(OPLTests, OPL_BreakTie_Test) {
 
   int actual0 = function_only->BreakTie(cvec);
 
-
   EXPECT_EQ(actualx, expectedx) << "Function not catching empty vector" << std::endl;
   EXPECT_EQ(actual0, expected0) << "Function not returning correct number when only 1 candidate" << std::endl;
 }
