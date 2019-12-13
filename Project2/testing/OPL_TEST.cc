@@ -92,6 +92,7 @@ TEST_F(OPLTests, OPL_GenerateRandomNumber_Test) {
 
 }
 
+// Tests the GetMaxVotes function
 TEST_F(OPLTests, OPL_GetMaxVotes_Test) {
   OPL * function_only = new OPL(9, 9, 9);
   int expectedx = -1;
@@ -149,6 +150,7 @@ TEST_F(OPLTests, OPL_GetMaxVotes_Test) {
   EXPECT_EQ(actual3, expected3) << "Function does not handle large numbers well" << std::endl;
 }
 
+// Tests the error checking for BreakTie, manual testing for more than 1 in OPLScenario6.csv
 TEST_F(OPLTests, OPL_BreakTie_Test) {
   OPL * function_only = new OPL(9, 9, 9);
   int expectedx = -1;
