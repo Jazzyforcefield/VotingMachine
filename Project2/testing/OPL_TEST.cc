@@ -113,8 +113,6 @@ TEST_F(OPLTests, OPLCandidateTest) {
   EXPECT_EQ((*cands)[9]->party_,"F");
 
 }
-<<<<<<< HEAD
-=======
 
 // Testing the OPL GenerateRandomNumber function
 TEST_F(OPLTests, OPL_GenerateRandomNumber_Test) {
@@ -209,4 +207,3 @@ TEST_F(OPLTests, OPL_BreakTie_Test) {
   EXPECT_EQ(actualx, expectedx) << "Function not catching empty vector" << std::endl;
   EXPECT_EQ(actual0, expected0) << "Function not returning correct number when only 1 candidate" << std::endl;
 }
->>>>>>> devel
