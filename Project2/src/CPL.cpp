@@ -27,7 +27,8 @@ int CPL::increment(int index) {
 }
 
 int CPL::Display() {
-	return 0;
+  system("java Display");
+  return 0;
 }
 
 int CPL::create_txt_file() {

@@ -12,6 +12,7 @@ int Processor::process() {
   std::string line;
   std::string part;
 
+  // Error checking
   if (!f) {
     std::cout << "Invalid file" << std::endl;
     return -1;
@@ -22,12 +23,14 @@ int Processor::process() {
     return -1;
   }
 
+  // Checking first line of input
   std::getline(f, line);
   o << line << std::endl;
   std::cout << line << std::endl;
-  if (!line.compare("OPL")) {
+  if (!line.compare("OPL")) { // OPL voting
     int seats, ballots, candidates;
 
+    // Getting election parameters
     std::getline(f, line);
     o << line << std::endl;
     seats = std::stoi(line);
@@ -40,22 +43,26 @@ int Processor::process() {
 
     vote_ = new OPL(seats, ballots, candidates);
 
+    // Creating new candidates
     for (int i = 0; i < candidates; i++) {
       Candidate * cand = new Candidate();
       std::getline(f, line);
-      o << line << std::endl;
+      o << "[" << line << "]" << std::endl;
       parse_OPL_line(cand, line);
       vote_->get_candidates()->push_back(cand);
     }
-  } else if (!line.compare("CPL")) {
+  } else if (!line.compare("CPL")) {  // CPL voting
     int party_count, seats, ballots, candidates;
     std::getline(f, line);
     o << line << std::endl;
+
+    // Parsing party count and line
     party_count = std::stoi(line);
     std::getline(f, line);
     o << "[" << line << "]" << std::endl;
     part = line;
 
+    // Getting election parameters
     std::getline(f, line);
     o << line << std::endl;
     seats = std::stoi(line);
@@ -68,6 +75,7 @@ int Processor::process() {
 
     vote_ = new CPL(seats, ballots, candidates);
 
+    // Tokenizing party line and pushing to vector
     int j = 0;
     std::vector<std::string> partytokens;
     std::stringstream partystream(part);
@@ -76,12 +84,15 @@ int Processor::process() {
       partytokens.push_back(temp);
     }
 
+    // Creating new parties
     for (int i = 0; i < party_count; i++) {
       Party * party = new Party();
       party->name_ = partytokens[i];
       party->votes_ = 0;
       vote_->get_parties()->push_back(party);
     }
+
+    // Assigning candidates to parties
     while (j < candidates) {
       std::getline(f, line);
       o << "[" << line << "]" << std::endl;
@@ -93,16 +104,14 @@ int Processor::process() {
       }
     }
       
-  
+  // Error catch
   } else {
     std::cout << "Unexpected voting type" << std::endl;
     return -1;
   }
 
   // Start processing the votes
-  int seats = vote_->get_seats();
   int ballots = vote_->get_ballots();
-  int candidates = vote_->get_candidates_num();
 
   for (int i = 0; i < ballots; i++) {
     std::getline(f, line);
@@ -110,9 +119,12 @@ int Processor::process() {
     int index = get_one_index(line);
     vote_->increment(index);
   }
+
+  // Calling VotingType functions
   vote_->CalculateWinners();
-  vote_->Display();
   vote_->create_txt_file();
+  vote_->Display();
+  return 0;
 }
 
 int Processor::parse_OPL_line(Candidate * candidate, std::string line) {
@@ -121,6 +133,7 @@ int Processor::parse_OPL_line(Candidate * candidate, std::string line) {
 
   std::string temp;
 
+  // Tokenize candidate and create candidate
   while (std::getline(linestream, temp, ',')) {
     tokens.push_back(temp);
   }
@@ -141,6 +154,7 @@ int Processor::parse_CPL_line(std::string line) { // Sets party attributes
 
   std::string temp;
 
+  // Tokenize and create candidates in their parties
   while (std::getline(linestream, temp, ',')) {
     tokens.push_back(temp);
   }
@@ -151,12 +165,12 @@ int Processor::parse_CPL_line(std::string line) { // Sets party attributes
   }
   
   std::vector<Party *> * parties = vote_->get_parties(); 
-  for (int i = 0; i< parties->size();i++)
+  for (int i = 0; i< static_cast<int>(parties->size());i++)
   {
 	Party * party = (*parties)[i];
   	if (tokens[1].compare(party->name_ )== 0) {
   		party->members_.push_back(tokens[0]);
-	}
+	  }
   }
   return 0;
 }
@@ -167,6 +181,7 @@ int Processor::get_one_index(std::string line) {
   int count = 0;
   std::string temp;
 
+  // Finds the index of the vote
   while (std::getline(linestream, temp, ',')) {
     if (!temp.compare("1")) {
       return count;

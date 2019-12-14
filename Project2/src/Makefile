@@ -29,4 +29,7 @@ clean:
 	rm -f audit.txt
 	rm -f temp.txt
 	rm -f result.txt
+	rm -f path.txt
 	rm -f *.class
+	rm -rf ../documentation/html
+	rm -rf ../documentation/latex

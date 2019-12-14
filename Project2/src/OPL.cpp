@@ -22,6 +22,7 @@ int OPL::increment(int index) {
 }
 
 int OPL::Display() {
+  system("java Display");
   return 0;
 }
 
@@ -51,7 +52,7 @@ int OPL::create_txt_file() {
 }
 
 int OPL::CalculateWinners() {
-    std::ofstream o("temp.txt");
+  std::ofstream o("temp.txt");
   std::cout << "CALCULATING" << std::endl;
   if (seats_ < 1 || num_candidates_ < seats_ || num_candidates_ < 0) {
     std::cout << "Invalid election parameters" << std::endl;
@@ -83,7 +84,6 @@ int OPL::CalculateWinners() {
 
       for (int i = 0; i < sizec; i++) {
         if (intermediate[i]->votes_ == max) {
-            o << "Candidate \"" << intermediate[i]->name_ << "\" from [" << intermediate[i]->party_ << "] won " << max << " ballots. " << std::endl;
           tied_candidates.push_back(intermediate[i]);
           tied_indices.push_back(indices[i]);
         }
@@ -105,13 +105,19 @@ int OPL::CalculateWinners() {
     }
   }
 
+  for (int i = 0; i < num_candidates_; i++) {
+    if (candidates_[i]->seat_winner_ == 1) {
+      o << "Candidate \"" << candidates_[i]->name_ << "\" from [" << candidates_[i]->party_ << "] won " << max << " ballots. " << std::endl;
+    }
+  }
+
 	return 0;
 }
 
 int OPL::BreakTie(std::vector<Candidate *>& tied_candidates) {  // Returns index of winner
   int numc, seed, rmax, maxi;
-  double random_numbers[numc];
   numc = tied_candidates.size();
+  double random_numbers[numc];
   seed = std::time(NULL);   // Technically insecure from security standpoint
   maxi = 0;
 

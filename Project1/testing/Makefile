@@ -14,22 +14,15 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-
-#  . = HW/HW04/
-#  .. = HW/
-#  ../.. = <repo-root>
-#  ../../googletest
-
 GTEST_DIR = ../../googletest
 
 # Where to find user code.
-USER_DIR = .
+USER_DIR = ../src
 
-CODEFILES = $(wildcard ../src/*.cc) $(wildcard ../src/*.cpp)
-COBJFILES = $(notdir $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(CODEFILES))))
+SRCFILES = $(wildcard ../src/*.cpp)
+OBJFILES = $(notdir $(patsubst %.cpp,%.o,$(SRCFILES)))
 
-SRCFILES = $(wildcard *.cc) $(wildcard *.cpp)
-OBJFILES = $(notdir $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(SRCFILES))))
+TESTFILES = $(wildcard *.cc)
 
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
@@ -37,7 +30,7 @@ OBJFILES = $(notdir $(patsubst %.cpp,%.o,$(patsubst %.cc,%.o,$(SRCFILES))))
 CPPFLAGS += -isystem $(GTEST_DIR)/include -I../src -I..
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -Wall -Wextra -pthread
+CXXFLAGS += -g -Wall -Wextra -lpthread
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
@@ -53,7 +46,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS)
 
 clean :
-	rm -f $(TESTS) gtest.a gtest_main.a *.o
+	rm -f $(TESTS) gtest.a gtest_main.a *.o result.txt audit.txt temp.txt
 
 # Builds gtest.a and gtest_main.a.
 
@@ -83,16 +76,12 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-$(USER_DIR)/../src/%.o: $(USER_DIR)../src/%.cc
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
+$(USER_DIR)/%.o : $(OBJFILES) $(USER_DIR)/%.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(OBJFILES)
 
-%.o : $(USER_DIR)/%.cc \
-                     $(USER_DIR)/%.h $(GTEST_HEADERS) $(CODEFILES)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/../src/%.cc
+%.o : %.cc \
+                     $(USER_DIR)/%.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c %.cc
 
-%.o : $(USER_DIR)/%.cpp \
-                     $(USER_DIR)/%.h $(GTEST_HEADERS) $(CODEFILES)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/../src/%.cpp
-
-vote_unittest : $(OBJFILES) gtest_main.a $(COBJFILES)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+vote_unittest : $(addprefix $(USER_DIR)/, $(OBJFILES)) $(TESTFILES) gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@ -pthread

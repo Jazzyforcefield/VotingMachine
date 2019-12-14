@@ -1,91 +1,90 @@
 import java.awt.BorderLayout;
-import java.awt.Desktop;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class display extends JFrame {
+/**
+ * Show the interface that users could select which file he wants to display
+ * and we can see that and save it
+ * @author      YongFeng Ji
+ * @version     2.0         
+ * @since       12/08/2019
+ */
+
+public class Display extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
+	   * This is the main method which call the main frame(Interface)
+	   * @param args Unused.
+	   */
 	public static void main(String[] args) {
-		String s = null;
-		try {
-			// Process provides control of native processes started by ProcessBuilder.start and Runtime.exec.
-			// getRuntime() returns the runtime object associated with the current Java application.
-      //Process p = Runtime.getRuntime().exec("");
-			BufferedReader stdInput = new BufferedReader(new InputStreamReader(System.in));
- 
-			// read the output from the command
-			System.out.println("Enter a command and press CTRL + D to stop\nActually... type \"Display\" without quotes:");
-			while ((s = stdInput.readLine()) != null) {
-        if (s.compareTo("Display") == 0) {
-      		EventQueue.invokeLater(new Runnable() {
-            public void run() {
-	            try {
-		            display frame = new display();
-		            frame.setVisible(true);
-	            } catch (Exception e) {
-		            e.printStackTrace();
-	            }
-            }
-          });
-        }
-				System.out.println(s);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Display frame = new Display();
+					frame.setVisible(true);
+					frame.setTitle("Main Page");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			System.exit(0);
-		} catch (IOException e) {
-			System.out.println("exception happened - here's what I know: ");
-			e.printStackTrace();
-			System.exit(-1);
-		}	
+		});
 	}
 
 	/**
-	 * Create the frame.
-	 */
-	
-
-	
-	public display() {
+	   * This is the display interface function
+	   */
+	public Display() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		JButton btnDisplay = new JButton("display");
-		btnDisplay.addActionListener(new ActionListener() {
+		JButton btnNewButton = new JButton("Result");
+		btnNewButton.addActionListener(new ActionListener() {
+			/**
+			   * This is the open result function button
+			   * @param none.
+			   * @return Another interface.
+			   */
 			public void actionPerformed(ActionEvent e) {
-
-			     
-//						try {
-//						     Desktop.getDesktop().open(new java.io.File("../1.txt"));
-//						     
-//						    } catch(Exception e1) {
-//						     e1.printStackTrace();
-//						    }
-//				
-				
-				
-				
+				// open the result interface, close the old one
+				Result re = new Result();
+				dispose();
+				re.setVisible(true);
 			}
 		});
-		contentPane.add(btnDisplay, BorderLayout.CENTER);
+		btnNewButton.setBounds(27, 77, 156, 84);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Audit file");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			/**
+			   * This is the open audit file function button
+			   * @param none.
+			   * @return Another interface.
+			   */
+			public void actionPerformed(ActionEvent e) {
+				// open the audit file interface, close the old one
+				auditfile au = new auditfile();
+				dispose();
+
+				au.setVisible(true);
+			}
+		});
+		btnNewButton_1.setBounds(254, 77, 156, 84);
+		contentPane.add(btnNewButton_1);
 	}
 
 }
