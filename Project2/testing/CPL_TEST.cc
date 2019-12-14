@@ -1,4 +1,27 @@
 //Copyright 2019, Zhuoran Bi CSCI 5801
+/**
+ * \class CPL_TEST
+ *
+ * \brief CPL test
+ *
+ * This class is CPL_Test.  It is used for testing the function in CPL class
+ * The get_party() and increment() function are checked by asserting the
+ * expected results and actual results.
+ *
+ *
+ * \note Will be used to test the functions in CPL file
+ *
+ * \author Team25
+ *
+ * \version $Revision: 1.0 $
+ *
+ * \date $Date: 2019/12/01 $
+ *
+ * Contact: csci5801-fall2019-team25@umn.edu
+ *
+ * $structure id: #11 $
+ *
+ */
 
 #include <string>
 #include <iostream>
@@ -8,10 +31,22 @@
 
 // Test feature for CPL class
 class CPLTests : public ::testing::Test {
+    
 	protected:
+    /**
+     * A protected variable.
+     * CPL cpl_test_case1_.
+     */
 	CPL* cpl_test_case1_;
+    /**
+     * A protected variable.
+     * CPL cpl_test_case1_.
+     */
 	CPL* cpl_test_case2_;
-
+    /**
+     * A public function.
+     * void setup() override function.
+     */
 	void SetUp() override { // Initialize things here
 		
 		cpl_test_case1_ = new CPL(5, 60, 21);
@@ -113,8 +148,10 @@ class CPLTests : public ::testing::Test {
 		delete cpl_test_case2_;
 	}
 };
-
-// Tests that CPL::increament() method.
+/**
+ * A public function.
+ * test function for CPL_Increment_Test assert the expected results and actual results.
+ */
 TEST_F(CPLTests, CPL_Increment_Test) {
 	std::vector<Party *> * parties = cpl_test_case1_->get_parties();
 	//EXPECT_EQ(*parties[1].name_, "G");
@@ -170,8 +207,10 @@ TEST_F(CPLTests, CPL_Increment_Test) {
 	
 }
 
-
-// Tests that CPL::get_party() method.
+/**
+ * A public function.
+ * test function for CPL_Get_Party_Test assert the expected results and actual results.
+ */
 TEST_F(CPLTests, CPL_Get_Party_Test) {
 	std::vector<Party*> parties1 = *(cpl_test_case1_->get_parties());
 	EXPECT_EQ(parties1.size(), 6) << " the size of the parties should be 6";
