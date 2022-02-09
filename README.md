@@ -11,13 +11,13 @@ The Processor class handles all the parsing. Polymorphism is used by having an a
 This program requires the use of both Java and C++, meaning that you must have both the Java Standard Edition JDK 8 and the GNU compiler running g++ version 7.4.0. Running on a CSELabs machine should be sufficient since it has all the dependencies.
 
 ## How to Run
-In order to run the program, you must open a Terminal (Ctrl + Alt + T) and change directories to the Project2 folder. Depending on where you downloaded the repository, it will likely be in your Downloads folder. The Downloads folder is located in the home directory, and the repository should be accessible by using the following command:
+In order to run the program, you must open a Terminal (Ctrl + Alt + T) and change directories to the VotingMachine folder. Depending on where you downloaded the repository, it will likely be in your Downloads folder. The Downloads folder is located in the home directory, and the repository should be accessible by using the following command:
 
-`cd ~/Downloads/repo-Team25`
+`cd ~/Downloads/VotingMachine`
 
 We then want to change directories to the Project2's "src" folder using the following command:
 
-`cd Project2/src`
+`cd src`
 
 Once we are there, do the following to run the program:
 
